@@ -46,7 +46,6 @@ else $webConf = $webConfDefault;
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
         <!-- Fonts -->
-        <link href="/assets/gFonts/Montserrat.css" rel="stylesheet">
         <link href="/assets/gFonts/Quicksand.css" rel="stylesheet">
         <link href="/assets/gFonts/Sora.css" rel="stylesheet">
         <!-- Style -->
@@ -54,7 +53,14 @@ else $webConf = $webConfDefault;
     </head>
     
     <body id="body" class="no-transitions">
+        <div id="header">
+            <h1 id="title"><?= $webConf['metaTitle'] ?></h1>
+            <div id="headerTransGrad"></div>
+        </div>
         <?= $output ?>
+        <div id="footer">
+            &copy; CyberOfficial 2021
+        </div>
         <!-- JS -->
         <script src="/assets/main.js"></script>
     </body>

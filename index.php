@@ -5,11 +5,6 @@ $webConf = [
 ];
 ?>
 
-<div id="header">
-    <h1 id="title">Welcome!</h1>
-    <div id="headerTransGrad"></div>
-</div>
-
 <div class="container">
     <h1>Welcome to SimpleCyber.org!</h1>
     <p>Hi! I'm <b>Kaleb</b>, also known online as <b>CyberGen49</b>, <b>CyberOfficial</b>, or just simply, <b>Cyber</b>, and I'm a student majoring in Computer Information Systems at the University of Houston. I've finally gotten around to putting together a simple landing site for my domain, <b>simplecyber.org</b> (which you're looking at right now), and I want to use this place to tell you about myself and share some projects I'm working on.</p>
@@ -36,10 +31,6 @@ $webConf = [
     <p>Despite my Rainmeter burnout, I still had an urge to develop graphical interfaces, so, in August of 2020, I decided to pick up web development. This was big. The more I played, the more I learned. HTML, CSS, PHP, JavaScript, SQL. Slowly, I've built up my web dev knowledge to the point where I feel like I could remake a lot of existing websites better than they were made originally.</p>
     <p>This brings us to today. I've graduated high school and I'm working my way through college. I feel like I've kind of gotten a taste of everything so far, and I enjoy doing all of it, so I chose a fairly generic IT major to maybe help me find my way. I have, however, made it clear in my mind that I don't want to be a programmer. Programming is something that I enjoy doing in my free time, and I feel like having someone tell me exactly what I need to do would ruin that fun for me.</p>
     <p>The future has yet to happen. Who knows what's next? I'll try not to forget to update this story when anything new or revolutionary happens.</p>
-</div>
-
-<div id="footer">
-    &copy; CyberOfficial 2021
 </div>
 
 <?php require($_SERVER['DOCUMENT_ROOT']."/assets/main.php") ?>
