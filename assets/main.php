@@ -6,7 +6,7 @@ $webConfDefault = [
     "pageDesc" => "Welcome to SimpleCyber.org!",
     "siteName" => "SimpleCyber.org",
     "favicon" => "/assets/icon.png",
-    "themeColour" => "#a035d2",
+    "themeColour" => "#202124",
 ];
 if (isset($webConf)) $webConf = array_merge($webConfDefault, $webConf);
 else $webConf = $webConfDefault;
@@ -21,7 +21,7 @@ else $webConf = $webConfDefault;
                 $webConf['metaTitle'] = $webConf['siteName'];
                 if ($webConf['pageTitle'] != "") {
                     $webConf['metaTitle'] = $webConf['pageTitle'];
-                    $webConf['pageTitle'] = $webConf['pageTitle']." | ".$webConf['siteName'];
+                    $webConf['pageTitle'] = $webConf['pageTitle']." - ".$webConf['siteName'];
                 } else {
                     $webConf['pageTitle'] = $webConf['siteName'];
                 }
@@ -53,9 +53,14 @@ else $webConf = $webConfDefault;
     </head>
     
     <body id="body" class="no-transitions">
-        <div id="header">
-            <h1 id="title"><?= $webConf['metaTitle'] ?></h1>
-            <div id="headerTransGrad"></div>
+        <div id="topbar" class="row no-gutters">
+            <h1 id="topbarTitle" class="col-auto"><a href="/">SimpleCyber.org</a></h1>
+        </div>
+        <div id="headerCont">
+            <div id="header">
+                <h1 id="title"><?= $webConf['metaTitle'] ?></h1>
+                <!-- <div id="headerTransGrad"></div> -->
+            </div>
         </div>
         <?= $output ?>
         <div id="footer">
