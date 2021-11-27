@@ -72,7 +72,7 @@ body {
 
 #topbar {
     position: fixed;
-    padding: 0px 20px;
+    padding: 0px 10px;
     top: 0px;
     left: 0px;
     width: 100%;
@@ -80,8 +80,9 @@ body {
     z-index: 10;
     background: rgba(45, 46, 50, 0.8);
     backdrop-filter: blur(12px);
-    transition: 0.2s ease-in-out;
+    transition: 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
     box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.2);
+    user-select: none;
 }
 #topbar .col, #topbar .col-auto {
     display: flex;
@@ -92,20 +93,118 @@ body {
     line-height: 100%;
     padding: 0px;
     margin: 0px;
-    margin-top: -3px;
 }
 #topbarTitle a {
     font-size: 24px;
+    line-height: 100%;
+    padding: 5px 8px 6px 8px;
     background: inherit;
     font-family: inherit;
     color: #fff;
+    border-radius: 6px;
+    cursor: default;
 }
 #topbarTitle a:hover,
 #topbarTitle a:focus {
-    color: #E4BAF8;
+    background: rgba(255, 255, 255, 0.1);
 }
 #topbarTitle a:active {
-    color: #fff;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.topbarButton {
+    margin: 0px 8px;
+    padding: 8px;
+    font-size: 24px;
+    outline: none;
+    border: none;
+    background: none;
+    text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
+    border-radius: 6px;
+    transition: 0.1s ease-in-out;
+}
+.topbarButton:hover,
+.topbarButton:focus {
+    background: rgba(255, 255, 255, 0.1);
+}
+.topbarButton:active {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+#mainMenuHitArea {
+    display: none;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 11;
+}
+
+#mainMenu {
+    position: fixed;
+    margin: 10px;
+    padding: 5px;
+    top: 55px;
+    left: -600px;
+    max-width: calc(100% - 20px);
+    max-height: calc(100% - 75px);
+    background: rgba(45, 46, 50, 0.8);
+    border-radius: 8px;
+    backdrop-filter: blur(12px);
+    box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.2);
+    z-index: 11;
+    user-select: none;
+    opacity: 0;
+    overflow-y: scroll;
+}
+#mainMenu::-webkit-scrollbar {
+    width: 0px;
+}
+
+#mainMenu .sectionHead {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding: 8px 10px 0px 10px;
+    opacity: 70%;
+    font-size: 15px;
+}
+
+#mainMenu .item {
+    overflow: hidden;
+    flex-wrap: nowrap;
+    max-width: 500px;
+    padding: 8px 10px 7px 10px;
+    margin: 1px 0px;
+    border-radius: 6px;
+    background: none;
+    cursor: default;
+}
+#mainMenu .item:hover:not(.disabled),
+#mainMenu .item:focus:not(.disabled) {
+    background: rgba(255, 255, 255, 0.1);
+}
+#mainMenu .item:active:not(.disabled) {
+    background: rgba(255, 255, 255, 0.2);
+}
+#mainMenu .item.disabled {
+    opacity: 50%;
+}
+
+#mainMenu .item .icon {
+    display: flex;
+    align-items: center;
+    color: #E4BAF8;
+    font-size: 24px;
+    font-family: 'Material Icons Outlined';
+}
+
+#mainMenu .item .name {
+    padding-left: 10px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 #headerCont {
@@ -159,6 +258,7 @@ body {
     border-radius: 12px;
     border: 3px solid rgba(0, 0, 0, 0);
     box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.2);
+    cursor: default;
 }
 .projectCard:hover, .projectCard:focus {
     background: #292a2e;
@@ -189,11 +289,195 @@ body {
     opacity: 0.7;
 }
 
+.form.section {
+    margin-bottom: 10px;
+}
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    user-select: none;
+}
+.form.block .item {
+    width: 100%;
+}
+
+.form label {
+    width: 100%;
+    padding-bottom: 3px;
+}
+
+.form .item {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 0px;
+    margin: 5px !important;
+    background: #292a2e;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.2);
+    outline: none;
+    border: none;
+    overflow: hidden;
+    transition: 0.1s ease-in-out;
+}
+.form .item .icon {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0px 8px 1px 10px;
+    background: #43444B;
+    line-height: 100%;
+    color: rgba(255, 255, 255, 0.5);
+    font-family: "Material Icons Outlined", "Material Icons", sans-serif;
+    font-size: 26px;
+    transition: 0.1s ease-in-out;
+}
+.form.multiSel .item .icon { padding-bottom: 0px; }
+.form .item .icon::after {
+    transition: 0.1s ease-in-out;
+}
+.form.singleSel .item .icon::after { content: "radio_button_unchecked"; }
+.form.multiSel .item .icon::after { content: "check_box_outline_blank"; }
+.form .item .label {
+    padding: 11px 14px 9px 14px;
+    line-height: 130%;
+}
+.form .item:hover:not(.selected):not(.disabled) .icon::after,
+.form .item:focus:not(.selected):not(.disabled) .icon::after,
+.form.multiSel .item:hover:not(.disabled) .icon::after,
+.form.multiSel .item:focus:not(.disabled) .icon::after {
+    color: #fff;
+}
+.form .item:active:not(.selected):not(.disabled) .icon {
+    color: #E4BAF8;
+}
+.form .item.selected .icon {
+    color: #E4BAF8;
+}
+.form.singleSel .item.selected .icon::after { content: "radio_button_checked"; }
+.form.multiSel .item.selected .icon::after { content: "check_box"; }
+.form .item.disabled {
+    box-shadow: none;
+}
+.form .item.disabled .label {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.form.textInput .textbox {
+    width: 100%;
+    padding: 12px 12px 11px 12px;
+    margin: 5px !important;
+    line-height: 130%;
+    background: #292a2e;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.2);
+    outline: none;
+    border: none;
+    border: 2px solid rgba(0, 0, 0, 0);
+    transition: 0.1s ease-in-out;
+}
+.form.textInput .textbox:hover:not(.disabled):not(:disabled) {
+    border-color: #43444B;
+}
+.form.textInput .textbox:focus:not(.disabled):not(:disabled) {
+    border-color: #E4BAF8;
+}
+.form.textInput .textbox:disabled,
+.form.textInput .textbox.disabled {
+    box-shadow: none;
+}
+
+.form.button .btn {
+    padding: 0px;
+    margin: 5px;
+    padding: 11px 14px 9px 14px;
+    line-height: 130%;
+    background: #E4BAF8;
+    color: #292a2e;
+    border-radius: 8px;
+    box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.2);
+    outline: none;
+    border: none;
+    cursor: default;
+    transition: 0.1s ease-in-out;
+}
+.form.button .btn:hover,
+.form.button .btn:focus {
+    background: #fff;
+}
+.form.button .btn:active {
+    background: #bbb;
+}
+.form.button .btn:disabled,
+.form.button .btn.disabled {
+    color: rgba(255, 255, 255, 0.5);
+    background: #292a2e;
+    box-shadow: none;
+}
+
+/* Handle touch devices */
+@media (hover: none) and (pointer: coarse) {    
+    #mainMenu .sectionHead {
+        font-size: 16px;
+        padding-bottom: 2px;
+        padding-top: 10px;
+    }
+    
+    #mainMenu .item {
+        padding: 10px 10px 9px 10px;
+    }
+    
+    #mainMenu .item .icon {
+        font-size: 28px;
+    }
+    
+    #mainMenu .item .name {
+        font-size: 17px;
+    }
+}
+
+/* Handle small widths */
+@media only screen and (max-width: 400px) {    
+    .form .item {
+        width: 100%;
+        text-align: left;
+    }
+}
+
+/* Move to the next flex line */
+.flexBreak {
+    flex-basis: 100%;
+    height: 0;
+}
+
+/* Custom placeholder text colour */
+::placeholder {
+    color: #fff;
+    opacity: 0.4;
+}
+
+/* Custom text selection colour */
+::selection {
+    border-radius: 6px;
+    color: #000;
+    background: #E4BAF8;
+}
+::-moz-selection {
+    border-radius: 6px;
+    color: #000;
+    background: #E4BAF8;
+}
+
 /* Custom scrollabrs */
 ::-webkit-scrollbar {
     width: 15px;
     height: 15px;
     background: rgba(0, 0, 0, 0.3);
+}
+::-webkit-scrollbar-corner {
+    background: rgba(0, 0, 0, 0.3);
+}
+::-webkit-resizer {
+    background: rgba(0, 0, 0, 0);
 }
 ::-webkit-scrollbar-thumb {
     background: #aaa;

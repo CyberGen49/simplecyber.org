@@ -1,5 +1,6 @@
 <?php
 ob_start();
+require($_SERVER['DOCUMENT_ROOT']."/private/utils.php");
 $webConf = [
     'pageTitle' => 'Welcome!',
     'pageDesc' => "The one-stop shop for everything about CyberOfficial!"
@@ -64,4 +65,4 @@ $webConf = [
     <p>The future has yet to happen. Who knows what's next? I'll try not to forget to update this story when anything new or revolutionary happens.</p> -->
 </div>
 
-<?php require($_SERVER['DOCUMENT_ROOT']."/assets/main.php") ?>
+<?php require($_SERVER['DOCUMENT_ROOT']."/private/main.php") ?>

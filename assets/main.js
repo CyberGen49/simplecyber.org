@@ -15,6 +15,7 @@ function _id(id) {
     return document.getElementById(id);
 }
 
+// Handle scrolling
 var lastScrollPos = 0;
 function checkScroll() {
     let el = document.documentElement;
@@ -28,8 +29,98 @@ function checkScroll() {
     } else {
         _id('topbar').style.top = '-55px';
         _id('topbar').style.opacity = 0;
+        hideMainMenu();
     }
     window.lastScrollPos = scrollPos;
+}
+
+var mainMenuTimeout;
+function showMainMenu() {
+    clearTimeout(window.mainMenuTimeout);
+    _id('mainMenuHitArea').style.display = 'block';
+    window.mainMenuTimeout = setTimeout(() => {
+        _id('mainMenu').style.transition = '0.3s cubic-bezier(0.4, 0.0, 0.2, 1)';
+        _id('mainMenu').style.left = '0px';
+        _id('mainMenu').style.opacity = 1;
+    }, 50);
+}
+function hideMainMenu() {
+    _id('mainMenu').style.left = '';
+    _id('mainMenu').style.opacity = '';
+    window.mainMenuTimeout = setTimeout(() => {
+        _id('mainMenuHitArea').style.display = '';
+        _id('mainMenu').style.transition = '';
+    }, 300);
+}
+
+var formInput = {};
+function prepareForms() {
+    let singleSels = document.getElementsByClassName('form singleSel');
+    let multiSels = document.getElementsByClassName('form multiSel');
+    let buttons = document.getElementsByClassName('form button');
+    const addFormEvents = function(type, item, items, key) {
+        item.addEventListener('click', function() {
+            this.blur();
+            if (item.classList.contains('disabled')) return;
+            if (type == 'single') {
+                if (item.classList.contains('selected')) return;
+                for (k = 0; k < items.length; k++) {
+                    items[k].classList.remove('selected');
+                }
+                item.classList.add('selected');
+                window.formInput[key] = item.innerHTML;
+                if (item.dataset.value) window.formInput[key] = item.dataset.value;
+            }
+            if (type == 'multi') {
+                let select = true;
+                if (item.classList.contains('selected')) {
+                    item.classList.remove('selected');
+                    select = false;
+                } else {
+                    item.classList.add('selected');
+                }
+                let value = item.innerHTML;
+                if (item.dataset.value) value = item.dataset.value;
+                if (select) window.formInput[key].push(value);
+                else {
+                    let index = window.formInput[key].indexOf(value);
+                    window.formInput[key].splice(index, 1);
+                }
+            }
+            console.log(`New value for input '${key}':`);
+            console.log(window.formInput[key]);
+        });
+        if (item.classList.contains('selected')) {
+            item.classList.remove('selected');
+            item.click();
+        }
+    }
+    for (i = 0; i < singleSels.length; i++) {
+        let section = singleSels[i];
+        let items = section.querySelectorAll('.item');;
+        window.formInput[section.dataset.name] = null;
+        for (j = 0; j < items.length; j++) {
+            let item = items[j];
+            addFormEvents('single', item, items, section.dataset.name);
+        }
+    }
+    for (i = 0; i < multiSels.length; i++) {
+        let section = multiSels[i];
+        let items = section.querySelectorAll('.item');;
+        window.formInput[section.dataset.name] = [];
+        for (j = 0; j < items.length; j++) {
+            let item = items[j];
+            addFormEvents('multi', item, items, section.dataset.name);
+        }
+    }
+    for (i = 0; i < buttons.length; i++) {
+        let section = buttons[i];
+        let items = section.querySelectorAll('.btn');
+        for (j = 0; j < items.length; j++) {
+            let item = items[j];
+            addFormEvents('btn', item, items, '');
+        }
+    }
 }
 
 // On load
@@ -37,7 +128,27 @@ window.onload = function() {
     document.getElementById("body").classList.remove("no-transitions");
     console.log("Page loaded");
     checkScroll();
+    // Run the checkScroll function on scroll
     document.addEventListener('scroll', function(e) {
         checkScroll();
     });
+    // Make the menu button clickable
+    _id('mainMenuButton').addEventListener('click', function() {
+        this.blur();
+        showMainMenu();
+    });
+    _id('mainMenuHitArea').addEventListener('click', function() {
+        hideMainMenu();
+    });
+    // Make all menu items hide the menu when clicked
+    let mainMenuItems = _id('mainMenu').getElementsByClassName('item');
+    for (i = 0; i < mainMenuItems.length; i++) {
+        let item = mainMenuItems[i];
+        if (item.classList.contains('disabled')) continue;
+        item.addEventListener('click', function() {
+            hideMainMenu();
+        });
+    }
+    // Prepare form elements
+    prepareForms();
 };

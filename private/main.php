@@ -38,13 +38,13 @@ else $webConf = $webConfDefault;
         <link rel="icon" href="<?= $webConf['favicon'] ?>">
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <!-- Bootstrap -->
+        <!-- Bootstrap Grid -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-v4-grid-only@1.0.0/dist/bootstrap-grid.css" rel="stylesheet">
         <!-- Normalize.css -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
         <!-- Material Icon Fonts -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+        <link href="/assets/gFonts/MaterialIcons.css" rel="stylesheet">
+        <link href="/assets/gFonts/MaterialIconsOutline.css" rel="stylesheet">
         <!-- Fonts -->
         <link href="/assets/gFonts/Quicksand.css" rel="stylesheet">
         <link href="/assets/gFonts/Sora.css" rel="stylesheet">
@@ -54,7 +54,31 @@ else $webConf = $webConfDefault;
     
     <body id="body" class="no-transitions">
         <div id="topbar" class="row no-gutters">
+            <div class="topbarButtonCont col-auto">
+                <button id="mainMenuButton" class="topbarButton material-icons">
+                    menu
+                </button>
+            </div>
             <h1 id="topbarTitle" class="col-auto"><a href="/">SimpleCyber.org</a></h1>
+        </div>
+        <div id="mainMenuHitArea"></div>
+        <div id="mainMenu">
+            <?php
+            $keys = array_keys($menu);
+            ?>
+            <?php foreach ($keys as $k): $section = $menu[$k]; ?>
+                <?php if (isset($section['name'])): ?>
+                    <div class="sectionHead"><?= $section['name'] ?></div>
+                <?php endif ?>
+                <?php foreach ($section['items'] as $item): ?>
+                    <a class="item row no-gutters <?php ($item['disabled'] ? print('disabled') : print('')) ?>" <?php (!$item['disabled'] ? print("href=\"{$item['href']}\"") : print('')) ?> <?php ($item['open'] ? print('target=_blank') : print('')) ?>>
+                        <div class="icon col-auto material-icons"><?= $item['icon'] ?></div>
+                        <div class="name col">
+                            <?= $item['name'] ?>
+                        </div>
+                    </a>
+                <?php endforeach ?>
+            <?php endforeach ?>
         </div>
         <div id="headerCont">
             <div id="header">

@@ -1,0 +1,85 @@
+
+# Menu
+
+top:
+  name: Main menu
+  items:
+  - name: Home
+    icon: home
+    href: /
+  - name: Tools overview
+    icon: build
+    href: /tools
+    disabled: true
+
+tools:
+  name: Tools
+  items:
+  - name: Text Analysis
+    icon: insights
+    href: /tools/text-analysis
+    desc: "Get all kinds of stats about any piece of text, including character, word, and line counts, and the frequency of each word and character."
+    disabled: true
+  - name: Find and Replace
+    icon: manage_search
+    href: /tools/find-and-replace
+    desc: "Count occurrences, find and replace results, and use RegEx search on a piece of text."
+    disabled: true
+  - name: Line Sorter
+    icon: sort
+    href: /tools/line-sorter
+    desc: "Sort any number of lines alphabetically or by length."
+    disabled: true
+  - name: Text Encoder and Decoder
+    icon: integration_instructions
+    href: /tools/encoder
+    desc: "Encode and decode text using various encoding methods."
+    disabled: true
+  - name: Text Hasher
+    icon: tag
+    href: /tools/hasher
+    desc: "Get the hash of text using various algorithms."
+    disabled: true
+  - name: Random Number Generator
+    icon: casino
+    href: /tools/rng
+    desc: "Pick a random number within a range."
+    disabled: true
+  - name: Dice
+    icon: casino
+    href: /tools/dice
+    desc: "Roll any number of any type of dice."
+    disabled: true
+  - name: Coin Flip
+    icon: monetization_on
+    href: /tools/coin-flip
+    desc: "Flip a coin."
+    disabled: true
+  - name: Metronome
+    icon: graphic_eq
+    href: /tools/metronome
+    desc: "Set and listen to a metronome at any BPM value."
+    disabled: true
+  - name: Time Between Dates
+    icon: date_range
+    href: /tools/between-dates
+    desc: "Calculate the exact time between two dates."
+    disabled: true
+  - name: Unix Timestamp Converter
+    icon: schedule
+    href: /tools/unix-timestamp
+    desc: "Convert to and from a Unix timestamp."
+    disabled: true
+  - name: Open Port Checker
+    icon: lock_open
+    href: /tools/port-checker
+    desc: "Check if a port is open on a certain IP."
+    disabled: true
+
+extras:
+  name: Extras
+  items:
+  - name: View on GitHub
+    icon: public
+    href: https://github.com/CyberGen49/simplecyber.org
+    open: true
