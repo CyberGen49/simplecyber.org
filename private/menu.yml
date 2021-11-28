@@ -18,7 +18,7 @@ tools:
   - name: Text Analysis
     icon: insights
     href: /tools/text-analysis
-    desc: "Get all kinds of stats about any piece of text, including character, word, and line counts, and the frequency of each word and character."
+    desc: "Get all kinds of stats about any piece of text, including character, word, and line counts, along with the frequency of each word and character."
     disabled: true
   - name: Find and Replace
     icon: manage_search

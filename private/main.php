@@ -53,7 +53,7 @@ else $webConf = $webConfDefault;
     </head>
     
     <body id="body" class="no-transitions">
-        <div id="topbar" class="row no-gutters">
+        <div id="topbar" class="row no-gutters acrylic">
             <div class="topbarButtonCont col-auto">
                 <button id="mainMenuButton" class="topbarButton material-icons">
                     menu
@@ -62,7 +62,7 @@ else $webConf = $webConfDefault;
             <h1 id="topbarTitle" class="col-auto"><a href="/">SimpleCyber.org</a></h1>
         </div>
         <div id="mainMenuHitArea"></div>
-        <div id="mainMenu">
+        <div id="mainMenu" class="acrylic">
             <?php
             $keys = array_keys($menu);
             ?>
@@ -71,7 +71,7 @@ else $webConf = $webConfDefault;
                     <div class="sectionHead"><?= $section['name'] ?></div>
                 <?php endif ?>
                 <?php foreach ($section['items'] as $item): ?>
-                    <a class="item row no-gutters <?php ($item['disabled'] ? print('disabled') : print('')) ?>" <?php (!$item['disabled'] ? print("href=\"{$item['href']}\"") : print('')) ?> <?php ($item['open'] ? print('target=_blank') : print('')) ?>>
+                    <a class="item row no-gutters <?php (isset($item['disabled']) ? print('disabled') : print('')) ?>" <?php (!isset($item['disabled']) ? print("href=\"{$item['href']}\"") : print('')) ?> <?php (isset($item['open']) ? print('target=_blank') : print('')) ?>>
                         <div class="icon col-auto material-icons"><?= $item['icon'] ?></div>
                         <div class="name col">
                             <?= $item['name'] ?>
