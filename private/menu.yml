@@ -48,12 +48,17 @@ tools:
   - name: Dice
     icon: casino
     href: /tools/dice
-    desc: "Roll any number of any type of dice."
+    desc: "Roll any number of any size of dice."
     disabled: true
   - name: Coin Flip
     icon: monetization_on
     href: /tools/coin-flip
     desc: "Flip a coin."
+    disabled: true
+  - name: Weighted Grade Calculator
+    icon: grading
+    href: /tools/grade-calc
+    desc: "Calculate the grade average from a series of differently-weighted scores."
     disabled: true
   - name: Metronome
     icon: graphic_eq

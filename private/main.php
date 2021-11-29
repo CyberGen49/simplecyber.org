@@ -71,7 +71,7 @@ else $webConf = $webConfDefault;
                     <div class="sectionHead"><?= $section['name'] ?></div>
                 <?php endif ?>
                 <?php foreach ($section['items'] as $item): ?>
-                    <a class="item row no-gutters <?php (isset($item['disabled']) ? print('disabled') : print('')) ?>" <?php (!isset($item['disabled']) ? print("href=\"{$item['href']}\"") : print('')) ?> <?php (isset($item['open']) ? print('target=_blank') : print('')) ?>>
+                    <a class="item row no-gutters <?php (isset($item['disabled']) ? print('disabled') : print('')) ?>" <?php (!isset($item['disabled']) ? print("href=\"{$item['href']}\"") : print('')) ?> <?php (isset($item['open']) ? print('target=_blank') : print('')) ?> <?php (isset($item['desc']) ? print("title=\"{$item['name']}\n{$item['desc']}\"") : print("title=\"{$item['name']}\"")) ?>>
                         <div class="icon col-auto material-icons"><?= $item['icon'] ?></div>
                         <div class="name col">
                             <?= $item['name'] ?>

@@ -25,7 +25,10 @@ foreach ($menu['tools']['items'] as $tool) {
 
     <h2>Counts</h2>
     <div class="row no-gutters">
-        <div class="col-sm-auto">Characters (no spaces): <span class="statValue"><span id="charCount">0</span> (<span id="charCountAlt">0</span>)</span></div>
+        <div class="col-sm-auto">
+            Characters: <span id="charCount" class="statValue">0</span>
+            <br>Characters without spaces: <span id="charCountAlt" class="statValue">0</span>
+        </div>
         <div class="col-auto spacer"></div>
         <div class="col-sm-auto">Words: <span class="statValue" id="wordCount">0</span></div>
         <div class="col-auto spacer"></div>
