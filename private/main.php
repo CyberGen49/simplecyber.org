@@ -53,6 +53,7 @@ else $webConf = $webConfDefault;
     </head>
     
     <body id="body" class="no-transitions">
+        <script src="/assets/main.js"></script>
         <div id="topbar" class="row no-gutters acrylic">
             <div class="topbarButtonCont col-auto">
                 <button id="mainMenuButton" class="topbarButton material-icons">
@@ -83,14 +84,18 @@ else $webConf = $webConfDefault;
         <div id="headerCont">
             <div id="header">
                 <h1 id="title"><?= $webConf['metaTitle'] ?></h1>
-                <!-- <div id="headerTransGrad"></div> -->
             </div>
         </div>
         <?= $output ?>
         <div id="footer">
-            &copy; CyberOfficial 2021
+            <p>&copy; CyberOfficial 2021</p>
+            Wanna talk? DM me on Discord @Cyber#1000
+            <br>
+            <a href="https://github.com/CyberGen49" target="_blank">GitHub</a> • 
+            <a  href="https://www.youtube.com/channel/UCbOf1f_IaGsNw3pafkeodbQ" target="_blank">YouTube</a> • 
+            <a href="https://reddit.com/u/CyberGen49" target="_blank">Reddit</a> • 
+            <a href="https://www.deviantart.com/cybergen49" target="_blank">DeviantArt</a>
+            <br><a href="https://github.com/CyberGen49/simplecyber.org" target="_blank">View simplecyber.org on GitHub</a>
         </div>
-        <!-- JS -->
-        <script src="/assets/main.js"></script>
     </body>
 </html>

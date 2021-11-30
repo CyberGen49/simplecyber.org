@@ -15,6 +15,26 @@ function _id(id) {
     return document.getElementById(id);
 }
 
+// Count the number of words in a string
+function countWords(s){
+    s = s.replace(/(^\s*)|(\s*$)/gi,""); //exclude  start and end white-space
+    s = s.replace(/[ ]{2,}/gi," "); //2 or more space to 1
+    s = s.replace(/\n /,"\n"); // exclude newline with a start spacing
+    return s.split(' ').filter(function(str){return str!="";}).length;
+    //return s.split(' ').filter(String).length; - this can also be used
+}
+
+// Return a number with comma separators
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}
+
+// Rounds a number to a certain number of decimal places
+function roundSmart(number, decimalPlaces = 0) {
+    const factorOfTen = Math.pow(10, decimalPlaces)
+    return Math.round(number * factorOfTen) / factorOfTen
+}
+
 // Handle scrolling
 var lastScrollPos = 0;
 function checkScroll() {

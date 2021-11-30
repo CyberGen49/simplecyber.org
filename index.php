@@ -14,6 +14,10 @@ $webConf = [
 
     <h2>Projects</h2>
     <div style="height: 8px"></div>
+    <a class="projectCard" href="/tools">
+        <h1>SimpleCyber.org Tools</h1>
+        <p>A growing collection of useful tools hosted right here on this site.</p>
+    </a>
     <a class="projectCard" href="https://github.com/CyberGen49/CyberVideoPlayer" target="_blank">
         <h1>CyberVideoPlayer</h1>
         <p>A clean and functional embeddable HTML video player, hosted with Github Pages.</p>
