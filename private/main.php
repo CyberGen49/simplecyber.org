@@ -89,13 +89,14 @@ else $webConf = $webConfDefault;
         <?= $output ?>
         <div id="footer">
             <p>&copy; CyberOfficial 2021</p>
-            Wanna talk? DM me on Discord @Cyber#1000
-            <br>
-            <a href="https://github.com/CyberGen49" target="_blank">GitHub</a> • 
-            <a  href="https://www.youtube.com/channel/UCbOf1f_IaGsNw3pafkeodbQ" target="_blank">YouTube</a> • 
-            <a href="https://reddit.com/u/CyberGen49" target="_blank">Reddit</a> • 
-            <a href="https://www.deviantart.com/cybergen49" target="_blank">DeviantArt</a>
-            <br><a href="https://github.com/CyberGen49/simplecyber.org" target="_blank">View simplecyber.org on GitHub</a>
+            <p>
+                Wanna talk? DM me on Discord @Cyber#1000<br>
+                <a href="https://github.com/CyberGen49" target="_blank">GitHub</a> • 
+                <a  href="https://www.youtube.com/channel/UCbOf1f_IaGsNw3pafkeodbQ" target="_blank">YouTube</a> • 
+                <a href="https://reddit.com/u/CyberGen49" target="_blank">Reddit</a> • 
+                <a href="https://www.deviantart.com/cybergen49" target="_blank">DeviantArt</a>
+                <br><a href="https://github.com/CyberGen49/simplecyber.org" target="_blank">View simplecyber.org on GitHub</a>
+            </p>
         </div>
     </body>
 </html>

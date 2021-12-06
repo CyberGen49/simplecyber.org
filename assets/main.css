@@ -54,15 +54,13 @@ p, li {
 
 a {
     color: #E4BAF8;
-    background: rgba(0, 0, 0, 0.3);
-    padding: 2px 3px 1px 3px;
-    border-radius: 6px;
     transition: 0.1s ease-in-out;
     text-decoration: none;
 }
-a:hover, a:focus {
-    background: #E4BAF8;
-    color: #000;
+a:hover:not(:disabled):not(.disabled),
+a:focus:not(:disabled):not(.disabled) {
+    color: #fff;
+    text-decoration: underline;
 }
 
 span {
@@ -113,6 +111,7 @@ body {
 #topbarTitle a:hover,
 #topbarTitle a:focus {
     background: rgba(255, 255, 255, 0.1);
+    text-decoration: none;
 }
 #topbarTitle a:active {
     background: rgba(255, 255, 255, 0.2);
@@ -189,6 +188,7 @@ body {
 #mainMenu .item:hover:not(.disabled),
 #mainMenu .item:focus:not(.disabled) {
     background: rgba(255, 255, 255, 0.1);
+    text-decoration: none;
 }
 #mainMenu .item:active:not(.disabled) {
     background: rgba(255, 255, 255, 0.2);
@@ -269,6 +269,7 @@ body {
 .projectCard:hover, .projectCard:focus {
     background: #292a2e;
     border-color: #E4BAF8;
+    text-decoration: none !important;
 }
 .projectCard:active {
     background: #292a2e;
