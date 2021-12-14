@@ -38,6 +38,11 @@ tools:
     href: /tools/hasher
     desc: "Get the hash of text using various algorithms."
     disabled: true
+  - name: Random Case
+    icon: casino
+    href: /tools/random-case
+    desc: "Scramble the case of letters in a piece of text."
+    disabled: true
   - name: Random Number Generator
     icon: casino
     href: /tools/rng
@@ -58,6 +63,11 @@ tools:
     href: /tools/coin-flip
     desc: "Flip a coin."
     disabled: true
+  - name: Password Generator
+    icon: password
+    href: /tools/pass-gen
+    desc: "Generate a secure password with several generation options."
+    disabled: true
   - name: Weighted Grade Calculator
     icon: grading
     href: /tools/grade-calc
@@ -77,6 +87,11 @@ tools:
     icon: schedule
     href: /tools/unix-timestamp
     desc: "Convert to and from a Unix timestamp."
+    disabled: true
+  - name: Create Site Popup
+    icon: open_in_new
+    href: /tools/popout
+    desc: "Pop any site out into its own standalone window."
     disabled: true
   - name: Open Port Checker
     icon: lock_open
