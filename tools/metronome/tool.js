@@ -48,6 +48,10 @@ window.addEventListener('load', function() {
             _id('playPause').click();
         }
     });
+    beatUp.volume = 0;
+    beatDown.volume = 0;
+    beatUp.play();
+    beatDown.play();
 });
 
 var metronomePlaying = false;
@@ -67,6 +71,8 @@ function metronomePlayPause() {
         let nextBeat = 0;
         let lastMspb = 0;
         let currentBeat = 1;
+        beatUp.volume = 1;
+        beatDown.volume = 1;
         window.metronomeInterval = setInterval(() => {
             let now = Date.now();
             let bpm = parseInt(_id('tempo').value);
