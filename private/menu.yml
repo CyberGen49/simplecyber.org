@@ -27,27 +27,19 @@ tools:
     icon: sort
     href: /tools/line-sorter
     desc: "Sort any number of lines alphabetically or by length."
-    disabled: true
-  - name: Text Encoder and Decoder
+  - name: Base64 Encode and Decode
     icon: integration_instructions
-    href: /tools/encoder
-    desc: "Encode and decode text using various encoding methods."
-    disabled: true
-  - name: Text Hasher
-    icon: tag
-    href: /tools/hasher
-    desc: "Get the hash of text using various algorithms."
+    href: /tools/base64
+    desc: "Encode and decode text in base64."
     disabled: true
   - name: Random Case
     icon: casino
     href: /tools/random-case
-    desc: "Scramble the case of letters in a piece of text."
-    disabled: true
+    desc: "Randomize the case of letters in a piece of text."
   - name: Random Number Generator
     icon: casino
     href: /tools/rng
-    desc: "Pick a random number within a range."
-    disabled: true
+    desc: "Generate a random number within a range."
   - name: Random Item Selector
     icon: casino
     href: /tools/random-item
@@ -56,7 +48,7 @@ tools:
   - name: Dice
     icon: casino
     href: /tools/dice
-    desc: "Roll any number of any size of dice."
+    desc: "Roll dice of any size and amount."
     disabled: true
   - name: Coin Flip
     icon: monetization_on
@@ -66,27 +58,30 @@ tools:
   - name: Password Generator
     icon: password
     href: /tools/pass-gen
-    desc: "Generate a secure password with several generation options."
+    desc: "Generate a secure password with a custom character set and length."
+    disabled: true
+  - name: Metronome
+    icon: graphic_eq
+    href: /tools/metronome
+    desc: "Set and listen to a metronome at any tempo, or tap to the beat of a song to find its tempo."
+  - name: Time Between Dates
+    icon: date_range
+    href: /tools/between-dates
+    desc: "Determine the time between two dates."
+  - name: Unix Timestamp Converter
+    icon: schedule
+    href: /tools/unix-timestamp
+    desc: "Convert to and from a Unix timestamp."
     disabled: true
   - name: Weighted Grade Calculator
     icon: grading
     href: /tools/grade-calc
     desc: "Calculate the grade average from a series of differently-weighted scores."
     disabled: true
-  - name: Metronome
-    icon: graphic_eq
-    href: /tools/metronome
-    desc: "Set and listen to a metronome at any BPM value."
-    disabled: true
-  - name: Time Between Dates
-    icon: date_range
-    href: /tools/between-dates
-    desc: "Calculate the exact time between two dates."
-    disabled: true
-  - name: Unix Timestamp Converter
-    icon: schedule
-    href: /tools/unix-timestamp
-    desc: "Convert to and from a Unix timestamp."
+  - name: Free Fall Calculator
+    icon: calculate
+    href: /tools/free-fall-calculator
+    desc: "Find the velocity of a falling object and the height from which it fell."
     disabled: true
   - name: Create Site Popup
     icon: open_in_new

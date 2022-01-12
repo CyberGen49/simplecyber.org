@@ -2,7 +2,8 @@
 $output = ob_get_clean();
 // Site configuration variables
 $webConfDefault = [
-    "pageTitle" => "SimpleCyber.org",
+    "pageTitle" => "",
+    "header" => "",
     "pageDesc" => "Welcome to SimpleCyber.org!",
     "siteName" => "SimpleCyber.org",
     "favicon" => "/assets/icon.png",
@@ -83,7 +84,7 @@ else $webConf = $webConfDefault;
         </div>
         <div id="headerCont">
             <div id="header">
-                <h1 id="title"><?= $webConf['metaTitle'] ?></h1>
+                <h1 id="title"><?= (($webConf['header'] !== '') ? $webConf['header'] : $webConf['metaTitle']) ?></h1>
             </div>
         </div>
         <?= $output ?>

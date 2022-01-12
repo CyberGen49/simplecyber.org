@@ -2,7 +2,7 @@
 ob_start();
 require($_SERVER['DOCUMENT_ROOT']."/private/utils.php");
 $webConf = [
-    'pageTitle' => 'Welcome!',
+    'header' => 'Welcome!',
     'pageDesc' => "The one-stop shop for everything about CyberOfficial!"
 ];
 ?>

@@ -1,13 +1,9 @@
 
 // Copies the specified text to the clipboard
 function copyText(value) {
-    var tempInput = document.createElement("input");
-    tempInput.value = value;
-    document.body.appendChild(tempInput);
-    tempInput.select();
-    document.execCommand("copy");
-    document.body.removeChild(tempInput);
-    console.log("Copied text to clipboard: "+value);
+    navigator.clipboard.writeText(value);
+    console.log("Copied text to clipboard: ");
+    console.log(value);
 }
 
 // Shorthand function for document.getElementById()
@@ -33,6 +29,28 @@ function numberWithCommas(x) {
 function roundSmart(number, decimalPlaces = 0) {
     const factorOfTen = Math.pow(10, decimalPlaces)
     return Math.round(number * factorOfTen) / factorOfTen
+}
+
+// Shuffles an array
+function array_shuffle(array) {
+    let currentIndex = array.length,  randomIndex;
+    // While there remain elements to shuffle...
+    while (currentIndex != 0) {
+        // Pick a remaining element...
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+        // And swap it with the current element.
+        [array[currentIndex], array[randomIndex]] = [
+            array[randomIndex], array[currentIndex]
+        ];
+    }
+  
+    return array;
+}
+
+// Returns a random integer between min (inclusive) and max (exclusive)
+function randInt(min, max) {
+    return Math.floor(Math.random() * (max - min)) + min;
 }
 
 // Handle scrolling
@@ -107,8 +125,10 @@ function prepareForms() {
                     window.formInput[key].splice(index, 1);
                 }
             }
-            console.log(`New value for input '${key}':`);
-            console.log(window.formInput[key]);
+            if (key !== '') {
+                console.log(`New value for input '${key}':`);
+                console.log(window.formInput[key]);
+            }
         });
         if (item.classList.contains('selected')) {
             item.classList.remove('selected');
