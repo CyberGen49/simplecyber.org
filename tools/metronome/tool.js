@@ -6,7 +6,7 @@ window.addEventListener('load', function() {
         let value = parseInt(_id('tempo').value);
         _id('playPause').disabled = false;
         _id('bigTempo').innerHTML = value;
-        if (value > 1000 || value < 20 || isNaN(value)) {
+        if (value > 2000 || value < 20 || isNaN(value)) {
             _id('playPause').disabled = true;
             _id('bigTempo').innerHTML = '--';
             if (metronomePlaying) metronomePlayPause();
@@ -17,7 +17,7 @@ window.addEventListener('load', function() {
         _id('beatCount').addEventListener(type, function(event) {
             let value = parseInt(_id('beatCount').value);
             _id('playPause').disabled = false;
-            if (value > 64 || value < 1 || isNaN(value)) {
+            if (value > 128 || value < 1 || isNaN(value)) {
                 _id('playPause').disabled = true;
                 if (metronomePlaying) metronomePlayPause();
                 value = 4;
@@ -39,7 +39,8 @@ window.addEventListener('load', function() {
         tempoOnChange();
     });
     window.addEventListener('keydown', function(event) {
-        if (event.code == 'KeyT') {
+        if (event.code == 'KeyT' || event.code == 'KeyR') {
+            _id('tapper').classList.add('active');
             _id('tapper').click();
             _id('tapper').active = true;
         }
@@ -48,16 +49,17 @@ window.addEventListener('load', function() {
             _id('playPause').click();
         }
     });
-    beatUp.volume = 0;
-    beatDown.volume = 0;
-    beatUp.play();
-    beatDown.play();
+    window.addEventListener('keyup', function(event) {
+        if (event.code == 'KeyT' || event.code == 'KeyR') {
+            _id('tapper').classList.remove('active');
+        }
+    });
 });
 
 var metronomePlaying = false;
 var metronomeInterval = null;
-var beatDown = new Audio('beat.wav');
-var beatUp = new Audio('beatAccent.wav');
+var beatDown = zounds.load('beat.wav');
+var beatUp = zounds.load('beatAccent.wav');
 function metronomePlayPause() {
     if (window.metronomePlaying) {
         // Stop playing
@@ -65,18 +67,22 @@ function metronomePlayPause() {
         _id('playPause').innerHTML = 'play_arrow';
         window.metronomePlaying = false;
     } else {
-        // Start playing
+        // Set variables
         let startTime = Date.now();
         let totalBeats = 1;
         let nextBeat = 0;
         let lastMspb = 0;
         let currentBeat = 1;
-        beatUp.volume = 1;
-        beatDown.volume = 1;
+        // Start the loop
         window.metronomeInterval = setInterval(() => {
+            // Set variables
             let now = Date.now();
             let bpm = parseInt(_id('tempo').value);
             let mspb = (60000/bpm);
+            let bpb = parseInt(_id('beatCount').value);
+            let localCurrentBeat = currentBeat;
+            let circles = _id('beatIndicators').getElementsByClassName('circle');
+            // If the BPM has changed, reset the timing variables
             if (lastMspb != mspb) {
                 startTime = now;
                 totalBeats = 1;
@@ -84,29 +90,31 @@ function metronomePlayPause() {
                 currentBeat = 1;
             }
             lastMspb = mspb;
-            let bpb = parseInt(_id('beatCount').value);
-            let localCurrentBeat = currentBeat;
-            let circles = _id('beatIndicators').getElementsByClassName('circle');
-            if ((now-nextBeat) > 0) {
+            // If its time for the next beat
+            if ((now-nextBeat) >= 0) {
+                // Set the next beat time
                 nextBeat = (startTime+(mspb*totalBeats));
+                // Play the beat
                 if (currentBeat == 1) {
-                    beatUp.currentTime = 0;
                     beatUp.play();
                 } else {
-                    beatDown.currentTime = 0;
                     beatDown.play();
                 }
+                // Animate the current beat indicator
                 try {
                     circles[(localCurrentBeat-1)].classList.add('active');
-                    setTimeout(() => {
-                        circles[(localCurrentBeat-1)].classList.remove('active');
-                    }, 50);
                 } catch (error) {}
+                setTimeout(() => {
+                    try {
+                        circles[(localCurrentBeat-1)].classList.remove('active');
+                    } catch (error) {}
+                }, (mspb/2));
+                // Update loop variables
                 totalBeats++;
                 currentBeat++;
                 if (currentBeat > bpb) currentBeat = 1;
             }
-        }, 1);
+        }, 10);
         _id('playPause').innerHTML = 'pause';
         window.metronomePlaying = true;
     }
@@ -115,20 +123,26 @@ function metronomePlayPause() {
 var lastTap = 0;
 var taps = [];
 function tapperTapped() {
+    // Get the amount of time since the last tap
     let difference = (Date.now()-window.lastTap);
+    window.lastTap = Date.now();
+    // Clear saved taps if this tap is more than 500ms different than the last one
     if (window.taps.length > 0 && Math.abs(window.taps[0]-difference) > 500)
         window.taps = [];
+    // Save this tap
     window.taps.unshift(difference);
+    // If it's been less than 2 seconds since the last tap
     if (difference < 2000) {
+        // Get the average tap difference (delay)
         let avg = 0;
         window.taps.forEach((tap) => {
             avg += tap;
         });
         avg /= window.taps.length;
+        // Stop the metronome if it's running
+        if (window.metronomePlaying) metronomePlayPause();
+        // Convert the average difference to BPM and update the textbox
         _id('tempo').value = Math.round(60000/avg);
-        // let avgDiff = Math.round(avg-difference);
-        // if (avgDiff > 0) avgDiff = `+${avgDiff}`;
-        // console.log(`Tap count: ${window.taps.length}\nHit avg. delay: ${Math.round(avg)}ms\nHit error (from avg.): ${avgDiff}ms`);
+    // If longer, clear the saved taps
     } else window.taps = [];
-    window.lastTap = Date.now();
 }

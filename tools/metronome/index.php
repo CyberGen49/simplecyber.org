@@ -16,7 +16,6 @@ foreach ($menu['tools']['items'] as $tool) {
 <div class="container">
     <h1>Listen to a metronome</h1>
     <p>This tool will play a metronome at any tempo. You can also change the number of beats per bar if your music uses a different time signature.</p>
-    <p>The metronome uses your system time to time the beats, making it very accurate.</p>
     <p>Press <b>Space</b> or <b>P</b> to quickly play/pause the metronome, and press <b>T</b> to the beat of a song to find its tempo. If you're on mobile, tap the button below the BPM textbox instead. The longer you tap, the more accurate the reading will become.</p>
 
     <div class="row no-gutters">
@@ -121,8 +120,14 @@ foreach ($menu['tools']['items'] as $tool) {
         background: #E4BAF8;
         transition: none;
     }
+
+    #tapper.active {
+        background: #fff;
+        transition: none;
+    }
 </style>
 
+<script src="/assets/zounds.min.js"></script>
 <script src="./tool.js"></script>
 
 <?php require($_SERVER['DOCUMENT_ROOT']."/private/main.php") ?>
