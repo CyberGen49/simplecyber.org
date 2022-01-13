@@ -6,7 +6,7 @@ window.addEventListener('load', function() {
         let value = parseInt(_id('tempo').value);
         _id('playPause').disabled = false;
         _id('bigTempo').innerHTML = value;
-        if (value > 2000 || value < 20 || isNaN(value)) {
+        if (value > 2000 || value < 1 || isNaN(value)) {
             _id('playPause').disabled = true;
             _id('bigTempo').innerHTML = '--';
             if (metronomePlaying) metronomePlayPause();
@@ -17,7 +17,7 @@ window.addEventListener('load', function() {
         _id('beatCount').addEventListener(type, function(event) {
             let value = parseInt(_id('beatCount').value);
             _id('playPause').disabled = false;
-            if (value > 128 || value < 1 || isNaN(value)) {
+            if (value > 32 || value < 1 || isNaN(value)) {
                 _id('playPause').disabled = true;
                 if (metronomePlaying) metronomePlayPause();
                 value = 4;
@@ -114,7 +114,7 @@ function metronomePlayPause() {
                 currentBeat++;
                 if (currentBeat > bpb) currentBeat = 1;
             }
-        }, 10);
+        }, 1);
         _id('playPause').innerHTML = 'pause';
         window.metronomePlaying = true;
     }
