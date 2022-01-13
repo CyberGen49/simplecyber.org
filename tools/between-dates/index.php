@@ -15,7 +15,7 @@ foreach ($menu['tools']['items'] as $tool) {
 
 <div class="container">
     <h1>Compare two dates</h1>
-    <p>This tool will show you the amount of time between two selected dates.</p>
+    <p>This tool will show you the amount of time between two selected dates. Everything here respects your local timezone, even if you opened a shared link.</p>
     
     <div class="row no-gutters">
         <div class="col-sm-6 form textInput section">
@@ -46,6 +46,9 @@ foreach ($menu['tools']['items'] as $tool) {
 
     <h2>Result</h2>
     <h1 id="result">Unknown</h1>
+    <div class="form button">
+        <button id="copy" class="btn" disabled>Copy result</button>
+    </div>
     <h2>Total values</h2>
     <div class="row no-gutters">
         <div class="col-auto statName">Seconds</div>
@@ -89,6 +92,14 @@ foreach ($menu['tools']['items'] as $tool) {
             <span id="years" class="statValue">0</span>
         </div>
     </div>
+    <div style="height: 5px"></div>
+    <small>Click any of these numbers to copy them.</small>
+
+    <h2>Share</h2>
+    <p>Share this setup with others so they don't have to re-enter the dates themselves!</p>
+    <div class="form button section">
+        <button id="share" class="btn" disabled>Copy shareable link</button>
+    </div>
 </div>
 
 <style>
@@ -109,6 +120,12 @@ foreach ($menu['tools']['items'] as $tool) {
         font-size: 20px;
         color: #E4BAF8;
         line-height: 100%;
+        user-select: none;
+        transition: 0.1s ease-in-out;
+        cursor: copy;
+    }
+    .statValue:hover {
+        color: #fff;
     }
 </style>
 

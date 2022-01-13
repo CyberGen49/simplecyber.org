@@ -9,11 +9,40 @@ window.addEventListener('load', function() {
         _id('dateA').addEventListener(type, getResult);
         _id('dateB').addEventListener(type, getResult);
     });
+    [_id('secs'), _id('mins'), _id('hours'), _id('days'), _id('weeks'), _id('months'), _id('years')].forEach((el) => {
+        el.addEventListener('click', (event) => {
+            copyText(el.innerHTML);
+        });
+    });
+    _id('copy').addEventListener('click', function(event) {
+        copyText(_id('result').innerHTML);
+    });
+    _id('share').addEventListener('click', function(event) {
+        changeUrl(`?a=${window.shareA}&b=${window.shareB}`, true);
+        copyText(window.location.href);
+    });
+    if (qs_param('a') && qs_param('b')) {
+        let a = qs_param('a');
+        let b = qs_param('b');
+        const getDate  = function(source) {
+            let timestamp = (parseInt(source)*1000)-(window.localTimeOffset*60*1000);
+            source = new Date(timestamp).toISOString().slice(0,16);
+            return source;
+        }
+        if (a == 'now') a = _id('dateNowA').classList.add('selected');
+        else a = getDate(a);
+        if (b == 'now') b = _id('dateNowA').classList.add('selected');
+        else b = getDate(b);
+        _id('dateA').value = a;
+        _id('dateB').value = b;
+    }
     setInterval(() => {
         getResult();
-    }, 500);
+    }, 100);
 });
 
+var shareA = 'now';
+var shareB = 'now';
 function getResult() {
     let now = new Date();
     now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
@@ -34,12 +63,24 @@ function getResult() {
     } else _id('dateB').disabled = false;
     if (dateA == '' || dateB == '') {
         _id('result').innerHTML == 'Unknown';
+        _id('copy').disabled = true;
+        _id('share').disabled = true;
         return;
     }
+    _id('copy').disabled = false;
+    _id('share').disabled = false;
     let unixDateA = (new Date(_id('dateA').value).getTime()/1000);
     let unixDateB = (new Date(_id('dateB').value).getTime()/1000);
-    if (dateANow) unixDateA = (Date.now()/1000);
-    if (dateBNow) unixDateB = (Date.now()/1000);
+    window.shareA = unixDateA;
+    window.shareB = unixDateB;
+    if (dateANow) {
+        unixDateA = (Date.now()/1000);
+        window.shareA = 'now';
+    }
+    if (dateBNow) {
+        unixDateB = (Date.now()/1000);
+        window.shareB = 'now';
+    }
     let secondsDifference = 0;
     if (unixDateA > unixDateB)
         secondsDifference = (unixDateA-unixDateB);
@@ -63,26 +104,32 @@ function getResult() {
         d = Math.floor(h);
         h = Math.round((24*(h-d)));
     }
-    if (d >= 365) {
-        d = d/365;
-        y = Math.floor(d);
-        d = Math.round((365*(d-y)));
+    if (d >= 30.4366) {
+        d = d/30.4366;
+        mo = Math.floor(d);
+        d = Math.round((30.4366*(d-mo)));
+    }
+    if (mo >= 12) {
+        mo = mo/12;
+        y = Math.floor(mo);
+        mo = Math.round((12*(mo-y)));
     }
     let cumulative = [];
     cumulative.push(`${s} secs`);
     if (m > 0) cumulative.push(`${m} mins`);
     if (h > 0) cumulative.push(`${h} hours`);
     if (d > 0) cumulative.push(`${d} days`);
-    if (y > 0) cumulative.push(`${y} years`);
+    if (mo > 0) cumulative.push(`${mo} months`);
+    if (y > 0) cumulative.push(`${numberWithCommas(y)} years`);
     cumulative = cumulative.reverse();
     cumulative = cumulative.join(', ');
     _id('result').innerHTML = `${cumulative} apart`;
     // Set totals
-    _id('secs').innerHTML = Math.floor(secondsDifference);
-    _id('mins').innerHTML = Math.floor(secondsDifference/60);
-    _id('hours').innerHTML = Math.floor(secondsDifference/60/60);
-    _id('days').innerHTML = Math.floor(secondsDifference/60/60/24);
-    _id('weeks').innerHTML = Math.floor(secondsDifference/60/60/24/7);
-    _id('months').innerHTML = Math.floor(secondsDifference/60/60/24/30.4366);
-    _id('years').innerHTML = Math.floor(secondsDifference/60/60/24/365.2422);
+    _id('secs').innerHTML = numberWithCommas(Math.floor(secondsDifference));
+    _id('mins').innerHTML = numberWithCommas(Math.floor(secondsDifference/60));
+    _id('hours').innerHTML = numberWithCommas(Math.floor(secondsDifference/60/60));
+    _id('days').innerHTML = numberWithCommas(Math.floor(secondsDifference/60/60/24));
+    _id('weeks').innerHTML = numberWithCommas(Math.floor(secondsDifference/60/60/24/7));
+    _id('months').innerHTML = numberWithCommas(roundSmart(secondsDifference/60/60/24/30.4366, 1));
+    _id('years').innerHTML = numberWithCommas(roundSmart(secondsDifference/60/60/24/365.2422, 2));
 }

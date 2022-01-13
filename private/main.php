@@ -89,7 +89,7 @@ else $webConf = $webConfDefault;
         </div>
         <?= $output ?>
         <div id="footer">
-            <p>&copy; CyberOfficial 2021</p>
+            <p>&copy; CyberOfficial <?= date('Y') ?></p>
             <p>
                 Wanna talk? DM me on Discord @Cyber#1000<br>
                 <a href="https://github.com/CyberGen49" target="_blank">GitHub</a> • 

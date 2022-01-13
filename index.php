@@ -21,7 +21,7 @@ $webConf = [
     <a class="projectCard" href="https://github.com/CyberGen49/CyberVideoPlayer" target="_blank">
         <h1>CyberVideoPlayer</h1>
         <p>A clean and functional embeddable HTML video player, hosted with Github Pages.</p>
-        <p>I always found making a custom video player to be a daunting task, but my urge to make something better than the default browser player led me to try it anyway. What came out was totally worth it.</p>
+        <p>I always found making a custom video player to be a daunting task, but my urge to make something better than the default browser player led me to try it anyway. The result was totally worth it.</p>
     </a>
     <a class="projectCard" href="https://github.com/CyberGen49/CyberFilesRewrite" target="_blank">
         <h1>CyberFilesRewrite</h1>
@@ -35,7 +35,7 @@ $webConf = [
     <a class="projectCard" href="https://www.deviantart.com/cybergen49/art/SpotiPlayer-for-Rainmeter-813654412" target="_blank">
         <h1>SpotiPlayer for Rainmeter</h1>
         <p>A skin that strives to mimic the appearance and functionality of the Spotify mobile app, right on your desktop.</p>
-        <p>Despite the massive success of this project, my Rainmeter burnout has left it abandoned.</p>
+        <p>This project is no longer maintained, and neither are the rest of my Rainmeter skins.</p>
     </a>
 
     <h2>About me</h2>

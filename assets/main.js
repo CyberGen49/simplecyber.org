@@ -31,6 +31,29 @@ function roundSmart(number, decimalPlaces = 0) {
     return Math.round(number * factorOfTen) / factorOfTen
 }
 
+// Get a query string parameter
+function qs_param(name, url = window.location.href) {
+    name = name.replace(/[\[\]]/g, '\\$&');
+    let regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    try {
+        return decodeURIComponent(results[2].replace(/\+/g, '%20'));
+    } catch {
+        console.log(`Failed to decode "${results[2]}"`);
+        return null;
+    }
+}
+
+// Update the address bar
+function changeUrl(url, replace = false) {
+    if (replace)
+        history.replaceState(null, 'URL Replacement', url);
+    else
+        history.pushState(null, 'URL Replacement', url);
+}
+
 // Shuffles an array
 function array_shuffle(array) {
     let currentIndex = array.length,  randomIndex;
@@ -56,6 +79,7 @@ function randInt(min, max) {
 // Handle scrolling
 var lastScrollPos = 0;
 function checkScroll() {
+    return;
     let el = document.documentElement;
     let scrollPos = el.scrollTop;
     // Show the titlebar if we're less than 50px from the top, or if the
@@ -192,3 +216,6 @@ window.onload = function() {
     // Prepare form elements
     prepareForms();
 };
+
+var humanTimezone = new window.Intl.DateTimeFormat().resolvedOptions().timeZone;
+var localTimeOffset = new Date().getTimezoneOffset();
