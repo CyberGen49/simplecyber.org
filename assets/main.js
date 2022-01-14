@@ -4,11 +4,28 @@ function copyText(value) {
     navigator.clipboard.writeText(value);
     console.log("Copied text to clipboard: ");
     console.log(value);
+    showToast(`
+        Text copied to clipboard!
+        <div class="desc">\"${escapeHtml(value)}\"</div>
+    `, 'inventory');
 }
 
 // Shorthand function for document.getElementById()
 function _id(id) {
     return document.getElementById(id);
+}
+
+// Escapes HTML-sensitive characters
+function escapeHtml(text) {
+    var map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        "\n": '<br>',
+        '"': '&quot;',
+        "'": '&#039;'
+    };
+    return text.replace(/[&<>"']/g, function(m) { return map[m]; });
 }
 
 // Count the number of words in a string
@@ -188,7 +205,7 @@ function prepareForms() {
 }
 
 // On load
-window.onload = function() {
+window.addEventListener('load', () => {
     document.getElementById("body").classList.remove("no-transitions");
     console.log("Page loaded");
     checkScroll();
@@ -215,7 +232,34 @@ window.onload = function() {
     }
     // Prepare form elements
     prepareForms();
-};
+});
+
+function showToast(text, icon = 'info', duration = 3) {
+    let id = `toast-${Date.now()}`;
+    if (duration == 0) text += `<div class="desc">Click here to dismiss</div>`;
+    _id('toastContainer').insertAdjacentHTML('afterbegin', `
+        <div id="${id}" class="toast acrylic">
+            <div class="icon">${icon}</div>
+            <div class="text">${text}</div>
+        </div>
+    `);
+    setTimeout(() => {
+        _id(id).addEventListener('click', () => {
+            hideToast(id);
+        });
+        _id(id).style.opacity = 1;
+    }, 50);
+    setTimeout(() => {
+        hideToast(id);
+    }, (duration*1000));
+}
+
+function hideToast(id) {
+    _id(id).style.opacity = 0;
+    setTimeout(() => {
+        _id(id).remove();
+    }, 200);
+}
 
 var humanTimezone = new window.Intl.DateTimeFormat().resolvedOptions().timeZone;
 var localTimeOffset = new Date().getTimezoneOffset();

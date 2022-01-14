@@ -99,5 +99,6 @@ else $webConf = $webConfDefault;
                 <br><a href="https://github.com/CyberGen49/simplecyber.org" target="_blank">View simplecyber.org on GitHub</a>
             </p>
         </div>
+        <div id="toastContainer"></div>
     </body>
 </html>

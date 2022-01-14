@@ -115,15 +115,24 @@ function getResult() {
         mo = Math.round((12*(mo-y)));
     }
     let cumulative = [];
-    cumulative.push(`${s} secs`);
-    if (m > 0) cumulative.push(`${m} mins`);
-    if (h > 0) cumulative.push(`${h} hours`);
-    if (d > 0) cumulative.push(`${d} days`);
-    if (mo > 0) cumulative.push(`${mo} months`);
-    if (y > 0) cumulative.push(`${numberWithCommas(y)} years`);
+    cumulative.push(`${s} sec${(s != 1) ? 's':''}`);
+    if (m > 0) cumulative.push(`${m} min${(m != 1) ? 's':''}`);
+    if (h > 0) cumulative.push(`${h} hour${(h != 1) ? 's':''}`);
+    if (d > 0) cumulative.push(`${d} day${(d != 1) ? 's':''}`);
+    if (mo > 0) cumulative.push(`${mo} month${(mo != 1) ? 's':''}`);
+    if (y > 0) cumulative.push(`${numberWithCommas(y)} year${(y != 1) ? 's':''}`);
     cumulative = cumulative.reverse();
     cumulative = cumulative.join(', ');
-    _id('result').innerHTML = `${cumulative} apart`;
+    let suffix = 'apart';
+    if ((dateANow && !dateBNow) || (dateBNow && !dateANow)) {
+        let absoluteUnix;
+        if (dateANow) absoluteUnix = unixDateB;
+        else absoluteUnix = unixDateA;
+        if (absoluteUnix < (Date.now()/1000)) suffix = 'ago';
+        else suffix = 'from now';
+    }
+    if (unixDateA == unixDateB) _id('result').innerHTML = "Dates are identical";
+    else _id('result').innerHTML = `${cumulative} ${suffix}`;
     // Set totals
     _id('secs').innerHTML = numberWithCommas(Math.floor(secondsDifference));
     _id('mins').innerHTML = numberWithCommas(Math.floor(secondsDifference/60));
