@@ -332,6 +332,7 @@ body {
     height: 100%;
     overflow: hidden;
     pointer-events: none;
+    user-select: none;
     z-index: 12;
 }
 .toast {

@@ -27,6 +27,12 @@ foreach ($menu['tools']['items'] as $tool) {
                 <label>Max</label>
                 <input id="max" type="number" class="textbox" value="10">
             </div>
+            <div class="form multiSel">
+                <button id="addCommas" class="item">
+                    <div class="icon"></div>
+                    <div class="label">Add commas</div>
+                </button>
+            </div>
             <div class="form button section">
                 <button id="go" class="btn">Generate</button>
             </div>

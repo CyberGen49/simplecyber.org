@@ -22,7 +22,6 @@ window.addEventListener('load', function() {
     generate();
 });
 
-var lastNum = 1;
 function generate() {
     let min = parseInt(_id('min').value);
     let max = parseInt(_id('max').value);
@@ -43,14 +42,14 @@ function generate() {
         return;
     }
     _id('copy').disabled = false;
-    let num = randInt(min, max);
-    let localLastNum = window.lastNum;
-    window.lastNum = num;
     let i = 0;
     let displayInterval = setInterval(() => {
         if (i == 12) clearInterval(displayInterval);
-        //_id('result').innerHTML = (localLastNum+(Math.round((lastNum-num)/12)*(i+1)));
-        _id('result').innerHTML = randInt(min, max);
+        let num = randInt(min, max);
+        if (_id('addCommas').classList.contains('selected'))
+            _id('result').innerHTML = numberWithCommas(num);
+        else
+            _id('result').innerHTML = num;
         i++;
     }, 25);
 }
