@@ -1,5 +1,6 @@
 <?php
 ob_start();
+require($_SERVER['DOCUMENT_ROOT']."/private/utils.php");
 $webConf = [
     'pageTitle' => $_GET['error']
 ];

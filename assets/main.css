@@ -530,6 +530,8 @@ body {
 .form.button .btn:hover,
 .form.button .btn:focus {
     background: #fff;
+    color: #292a2e;
+    text-decoration: none;
 }
 .form.button .btn:active {
     background: #bbb;
@@ -583,6 +585,11 @@ body {
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
     }
+}
+
+/* Hides the element */
+.hidden {
+    display: none;
 }
 
 /* Disables a whole div */

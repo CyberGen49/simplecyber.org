@@ -1,7 +1,7 @@
 
 // Tool Javascript
 
-window.addEventListener('load', function() {
+init.push(() => {
     window.addEventListener('keyup', function(event) {
         if (event.key == "Enter") generate();
     });

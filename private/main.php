@@ -87,7 +87,7 @@ else $webConf = $webConfDefault;
                 <h1 id="title"><?= (($webConf['header'] !== '') ? $webConf['header'] : $webConf['metaTitle']) ?></h1>
             </div>
         </div>
-        <?= $output ?>
+        <div id="main"><?= $output ?></div>
         <div id="footer">
             <p>&copy; CyberOfficial <?= date('Y') ?></p>
             <p>

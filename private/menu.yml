@@ -14,6 +14,11 @@ top:
 tools:
   name: Tools
   items:
+  - name: Browser Variable Dump
+    icon: developer_mode
+    href: /tools/var-dump
+    desc: "View just about every piece of data a website (like this one) has about your system, browser, and network connection."
+    disabled: true
   - name: Text Analysis
     icon: insights
     href: /tools/text-analysis
@@ -31,7 +36,6 @@ tools:
     icon: integration_instructions
     href: /tools/base64
     desc: "Encode and decode text in base64."
-    disabled: true
   - name: Password Generator
     icon: password
     href: /tools/pass-gen
@@ -48,8 +52,7 @@ tools:
   - name: Random Item Selector
     icon: casino
     href: /tools/random-item
-    desc: "Select a random item from a list of choices."
-    disabled: true
+    desc: "Pick a random item from a list of choices."
   - name: Dice
     icon: casino
     href: /tools/dice
@@ -74,28 +77,31 @@ tools:
     desc: "Convert between a human-readable date and a Unix timestamp."
   - name: Weighted Grade Calculator
     icon: grading
-    href: /tools/grade-calc
+    href: /tools/weighted-grade
     desc: "Calculate the grade average from a series of differently-weighted scores."
     disabled: true
   - name: Free Fall Calculator
     icon: calculate
-    href: /tools/free-fall-calculator
+    href: /tools/free-fall
     desc: "Find the velocity of a falling object and the height from which it fell."
     disabled: true
   - name: Video Embed Generator
     icon: videocam
-    href: /tools/cv-embed-gen
+    href: /tools/cvp-embed
     desc: "Generate CyberVideoPlayer embeds with any video URL."
     disabled: true
-  - name: Create Site Popup
+  - name: Custom Popup Generator
     icon: open_in_new
-    href: /tools/popout
-    desc: "Pop any site out into its own standalone window."
-    disabled: true
+    href: /tools/popup
+    desc: "Create a standalone popup of any site with a custom size and window position."
   - name: Open Port Checker
     icon: lock_open
     href: /tools/port-checker
-    desc: "Check if a port is open on a certain IP."
+    desc: "Check the status of a port on any IP address or hostname."
+  - name: Twitch Chat GIF Generator
+    icon: chat
+    href: /tools/twitch-chat-gif
+    desc: "Generate a fake scrolling Twitch chat GIF with your own messages."
     disabled: true
 
 extras:

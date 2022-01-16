@@ -1,10 +1,7 @@
 
 // Tool Javascript
 
-window.addEventListener('load', function() {
-    window.addEventListener('keyup', function(event) {
-        if (event.key == "Enter") generate();
-    });
+init.push(() => {
     ['change', 'paste', 'keyup'].forEach((type) => {
         _id('timestamp').addEventListener(type, timestampUpdated);
         _id('date').addEventListener(type, dateUpdated);

@@ -1,7 +1,7 @@
 
 // Tool Javascript
 
-window.addEventListener('load', function() {
+init.push(() => {
     const tempoOnChange = (event) => {
         let value = parseInt(_id('tempo').value);
         _id('playPause').disabled = false;

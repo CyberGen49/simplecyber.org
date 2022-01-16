@@ -1,7 +1,7 @@
 
 // Tool Javascript
 
-window.addEventListener('load', function() {
+init.push(() => {
     ['change', 'paste', 'keyup'].forEach((type) => {
         _id('input').addEventListener(type, onInputUpdate);
     });

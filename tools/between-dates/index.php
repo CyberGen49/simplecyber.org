@@ -96,7 +96,7 @@ foreach ($menu['tools']['items'] as $tool) {
     <small>Click any of these numbers to copy them.</small>
 
     <h2>Share</h2>
-    <p>Share this setup with others so they don't have to re-enter the dates themselves!</p>
+    <p>Copy this setup's shareable link to save your inputs for later, or to share them with someone!</p>
     <div class="form button section">
         <button id="share" class="btn" disabled>Copy shareable link</button>
     </div>
