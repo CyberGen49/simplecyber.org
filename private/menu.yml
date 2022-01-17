@@ -14,11 +14,6 @@ top:
 tools:
   name: Tools
   items:
-  - name: Browser Variable Dump
-    icon: developer_mode
-    href: /tools/var-dump
-    desc: "View just about every piece of data a website (like this one) has about your system, browser, and network connection."
-    disabled: true
   - name: Text Analysis
     icon: insights
     href: /tools/text-analysis
@@ -42,7 +37,7 @@ tools:
     desc: "Generate a secure password with a custom character set and length."
     disabled: true
   - name: Random Case
-    icon: casino
+    icon: text_fields
     href: /tools/random-case
     desc: "Randomize the case of letters in a piece of text."
   - name: Random Number Generator
@@ -63,6 +58,10 @@ tools:
     href: /tools/coin-flip
     desc: "Flip a coin."
     disabled: true
+  - name: Browser Variable Dump
+    icon: developer_mode
+    href: /tools/browser-dump
+    desc: "View information about your system, browser, and network connection that any website has access to."
   - name: Metronome
     icon: graphic_eq
     href: /tools/metronome
@@ -75,13 +74,23 @@ tools:
     icon: schedule
     href: /tools/unix-timestamp
     desc: "Convert between a human-readable date and a Unix timestamp."
+  - name: IP Location Finder
+    icon: place
+    href: /tools/ip-location
+    desc: "Determine the geographic location of an IP address."
+    disabled: true
+  - name: Aspect Ratio Calculator
+    icon: aspect_ratio
+    href: /tools/aspect-ratio
+    desc: "Calculate the aspect ratio from pixel width and height values."
+    disabled: true
   - name: Weighted Grade Calculator
     icon: grading
     href: /tools/weighted-grade
     desc: "Calculate the grade average from a series of differently-weighted scores."
     disabled: true
   - name: Free Fall Calculator
-    icon: calculate
+    icon: waterfall_chart
     href: /tools/free-fall
     desc: "Find the velocity of a falling object and the height from which it fell."
     disabled: true

@@ -63,7 +63,7 @@ foreach ($menu['tools']['items'] as $tool) {
         height: 64px;
         margin-right: 20px;
         border-radius: 32px;
-        background: #E4BAF8;
+        background: var(--acc);
         box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.2);
         border: none;
         outline: none;
@@ -117,7 +117,7 @@ foreach ($menu['tools']['items'] as $tool) {
         transition: 0.1s ease-in-out;
     }
     #beatIndicators .circle.active {
-        background: #E4BAF8;
+        background: var(--acc);
         transition: none;
     }
 

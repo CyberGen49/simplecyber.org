@@ -54,7 +54,7 @@ foreach ($menu['tools']['items'] as $tool) {
         font-family: 'Quicksand';
         font-weight: bold;
         font-size: 20px;
-        color: #E4BAF8;
+        color: var(--acc);
         line-height: 100%;
     }
 </style>

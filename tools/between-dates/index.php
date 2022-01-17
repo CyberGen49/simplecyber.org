@@ -118,7 +118,7 @@ foreach ($menu['tools']['items'] as $tool) {
         font-family: 'Quicksand';
         font-weight: bold;
         font-size: 20px;
-        color: #E4BAF8;
+        color: var(--acc);
         line-height: 100%;
         user-select: none;
         transition: 0.1s ease-in-out;

@@ -1,4 +1,11 @@
 
+:root {
+    --bg: #202124;
+    --bgL: #292a2e;
+    --bgLL: #43444B;
+    --acc: #E4BAF8;
+}
+
 * {
     font-family: 'Sora', 'Segoe UI', sans-serif;
     font-size: 16px;
@@ -12,7 +19,7 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Quicksand';
     font-weight: bold;
     line-height: 120%;
-    color: #E4BAF8;
+    color: var(--acc);
     text-shadow: 0px 2px 5px rgba(0, 0, 0, 0.4);
     padding-bottom: 5px;
 }
@@ -53,7 +60,7 @@ p, li {
 }
 
 a {
-    color: #E4BAF8;
+    color: var(--acc);
     transition: 0.1s ease-in-out;
     text-decoration: none;
 }
@@ -81,7 +88,7 @@ span {
 body {
     margin: 0px;
     padding: 0px;
-    background: #202124;
+    background: var(--bg);
 }
 
 #topbar {
@@ -208,7 +215,7 @@ body {
 #mainMenu .item .icon {
     display: flex;
     align-items: center;
-    color: #E4BAF8;
+    color: var(--acc);
     font-size: 24px;
     font-family: 'Material Icons Outlined';
 }
@@ -244,7 +251,7 @@ body {
     bottom: -1px;
     height: 50px;
     width: 100%;
-    background: linear-gradient(0deg, #202124 0%, rgba(0,0,0,0) 100%);
+    background: linear-gradient(0deg, var(--bg) 0%, rgba(0,0,0,0) 100%);
 }
 
 #title {
@@ -270,19 +277,19 @@ body {
     margin-bottom: 10px;
     padding: 8px 12px;
     color: inherit;
-    background: #292a2e;
+    background: var(--bgL);
     border-radius: 12px;
     border: 3px solid rgba(0, 0, 0, 0);
     box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.2);
     cursor: default;
 }
 .projectCard:hover, .projectCard:focus {
-    background: #292a2e;
-    border-color: #E4BAF8;
+    background: var(--bgL);
+    border-color: var(--acc);
     text-decoration: none !important;
 }
 .projectCard:active {
-    background: #292a2e;
+    background: var(--bgL);
     border-color: #fff;
 }
 .projectCard * {
@@ -355,7 +362,7 @@ body {
     line-height: 100%;
     font-family: "Material Icons Outlined", "Material Icons";
     font-size: 26px;
-    color: #E4BAF8;
+    color: var(--acc);
 }
 .toast .text {
     min-width: 0;
@@ -398,7 +405,7 @@ body {
     flex-wrap: nowrap;
     padding: 0px;
     margin: 5px !important;
-    background: #292a2e;
+    background: var(--bgL);
     border-radius: 8px;
     box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.2);
     outline: none;
@@ -411,7 +418,7 @@ body {
     align-items: center;
     height: 100%;
     padding: 0px 8px 0px 10px;
-    background: #43444B;
+    background: var(--bgLL);
     line-height: 100%;
     color: rgba(255, 255, 255, 0.5);
     font-family: "Material Icons Outlined", "Material Icons", sans-serif;
@@ -435,10 +442,10 @@ body {
     color: #fff;
 }
 .form .item:active:not(.selected):not(.disabled) .icon {
-    color: #E4BAF8;
+    color: var(--acc);
 }
 .form .item.selected .icon {
-    color: #E4BAF8;
+    color: var(--acc);
 }
 .form.singleSel .item.selected .icon::after { content: "radio_button_checked"; }
 .form.multiSel .item.selected .icon::after { content: "check_box"; }
@@ -454,7 +461,7 @@ body {
     padding: 12px 12px 11px 12px;
     margin: 5px !important;
     line-height: 130%;
-    background: #292a2e;
+    background: var(--bgL);
     border-radius: 8px;
     box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.2);
     outline: none;
@@ -467,10 +474,10 @@ body {
     resize: none;
 }
 .form.textInput .textbox:hover {
-    border-color: #43444B;
+    border-color: var(--bgLL);
 }
 .form.textInput .textbox:focus:not(.disabled):not(:disabled) {
-    border-color: #E4BAF8;
+    border-color: var(--acc);
 }
 .form.textInput .textbox::-webkit-scrollbar {
     background: none;
@@ -491,12 +498,12 @@ body {
     height: calc(100% - 20px);
     width: 30px;
     margin: 0px 10px;
-    background: #292a2e;
+    background: var(--bgL);
     display: flex;
     align-items: center;
     justify-content: center;
     line-height: 100%;
-    color: #E4BAF8;
+    color: var(--acc);
     font-family: "Material Icons Outlined", "Material Icons", sans-serif;
     font-size: 22px;
     pointer-events: none;
@@ -518,8 +525,8 @@ body {
     margin: 5px;
     padding: 11px 14px 9px 14px;
     line-height: 130%;
-    background: #E4BAF8;
-    color: #292a2e;
+    background: var(--acc);
+    color: var(--bgL);
     border-radius: 8px;
     box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.2);
     outline: none;
@@ -530,7 +537,7 @@ body {
 .form.button .btn:hover,
 .form.button .btn:focus {
     background: #fff;
-    color: #292a2e;
+    color: var(--bgL);
     text-decoration: none;
 }
 .form.button .btn:active {
@@ -539,7 +546,7 @@ body {
 .form.button .btn:disabled,
 .form.button .btn.disabled {
     color: rgba(255, 255, 255, 0.5);
-    background: #292a2e;
+    background: var(--bgL);
     box-shadow: none;
 }
 
@@ -577,7 +584,7 @@ body {
 
 /* Handle acrylic blur effect */
 .acrylic {
-    background: #292a2e;
+    background: var(--bgL);
 }
 @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
     .acrylic {
@@ -632,12 +639,12 @@ body {
 ::selection {
     border-radius: 6px;
     color: #000;
-    background: #E4BAF8;
+    background: var(--acc);
 }
 ::-moz-selection {
     border-radius: 6px;
     color: #000;
-    background: #E4BAF8;
+    background: var(--acc);
 }
 
 /* Custom scrollabrs */
@@ -664,7 +671,7 @@ body {
     border: 4px solid rgba(0, 0, 0, 0);
 }
 ::-webkit-scrollbar-thumb:active {
-    background: #E4BAF8;
+    background: var(--acc);
     background-clip: padding-box;
     border: 4px solid rgba(0, 0, 0, 0);
 }

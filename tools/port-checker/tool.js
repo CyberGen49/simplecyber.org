@@ -10,21 +10,24 @@ init.push(() => {
     setInterval(() => {
         let host = _id('host').value;
         let port = _id('port').value;
-        if ((isValidIp(host) || isValidHostname(host)) && port > 0 && port < 65536 && !isNaN(port))
+        if ((isValidIp(host) || isValidHostname(host)) && port > 0 && port < 65536 && !isNaN(port) && !window.checking)
             _id('go').disabled = false;
         else
             _id('go').disabled = true;
     }, 100);
 });
 
+var checking = false;
 async function checkPort() {
     _id('result').style.color = '';
-    _id('result').innerHTML = "Checking..."
+    _id('result').innerHTML = "Checking...";
+    window.checking = true;
     let host = _id('host').value;
     let port = _id('port').value;
     await fetch(`./server.php?host=${host}&port=${port}`).then((response) => {
         if (response.ok) return response.json();
         _id('result').innerHTML = "The request to the server failed! Try again."
+        window.checking = false;
     }).then((data) => {
         if (data.open) {
             _id('result').innerHTML = `Port ${port} on ${host} is open!`;
@@ -33,5 +36,6 @@ async function checkPort() {
             _id('result').innerHTML = `Port ${port} on ${host} is closed.`;
             _id('result').style.color = '#ffa6a6';
         }
+        window.checking = false;
     });
 }
