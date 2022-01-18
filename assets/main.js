@@ -96,6 +96,8 @@ function array_shuffle(array) {
 
 // Returns a random integer between min (inclusive) and max (exclusive)
 function randInt(min, max) {
+    if ((max-min) == 1)
+        return ((Math.random() > 0.5) ? 1 : 0);
     return Math.floor(Math.random() * (max - min)) + min;
 }
 

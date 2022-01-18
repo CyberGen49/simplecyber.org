@@ -550,6 +550,10 @@ body {
     box-shadow: none;
 }
 
+.form small {
+    padding-left: 5px;
+}
+
 /* Handle touch devices */
 @media (hover: none) and (pointer: coarse) {    
     #mainMenu .sectionHead {

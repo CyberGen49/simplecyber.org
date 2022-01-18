@@ -31,15 +31,24 @@ tools:
     icon: integration_instructions
     href: /tools/base64
     desc: "Encode and decode text in base64."
-  - name: Password Generator
-    icon: password
-    href: /tools/pass-gen
-    desc: "Generate a secure password with a custom character set and length."
-    disabled: true
   - name: Random Case
     icon: text_fields
     href: /tools/random-case
     desc: "Randomize the case of letters in a piece of text."
+  - name: Password Generator
+    icon: password
+    href: /tools/pass-gen
+    desc: "Generate secure passwords with a custom character set and length."
+  - name: Stopwatch
+    icon: timer
+    href: /tools/stopwatch
+    desc: "Start a stopwatch and keep track of laps."
+    disabled: true
+  - name: Timer
+    icon: timer
+    href: /tools/timer
+    desc: "Start a countdown timer and hear a sound when it reaches zero."
+    disabled: true
   - name: Random Number Generator
     icon: casino
     href: /tools/rng
