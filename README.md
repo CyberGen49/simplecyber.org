@@ -33,7 +33,8 @@ No versioning for now, but changes are separated by the day they were made, not 
 ### 2022-01-12
 * Updated the Metronome tool
     * Now using the [Zounds Audio Library](https://www.perambulum.com/zounds/) to better handle precise and lagless playback of sounds
-* Made the total values of the Time Between Dates tool clickable to copy them
+* Updated the Time Between Dates tool
+    * Now total values can be clicked on and copied
 * Added the Unix Timestamp Converter tool
 * Added sitemap.txt for Google purposes
 
