@@ -7,13 +7,14 @@ Even though I've gotten much more into Javascript-driven site experiences with p
 I initially intended to host this thing on GitHub Pages, but not having access to PHP would mean manually reusing a lot of code from page to page, which is something I try to avoid. Instead, I'm hosting this site from home.
 
 ## Changelog
+No versioning for now, but changes are separated by the day they were made, not necessarily committed. My days are split by sleep, not midnight, so these dates will tend to lag behind their respective commits.
 
 ### 2022-01-17
 * Added the Password Generator tool
 * Remembered that this changelog exists and updated it, using commit history for reference
 
 ### 2022-01-16
-* Improved the Open Port Checker server side code's error handling
+* Improved error handling on the server side of the Open Port Checker
 * Added the Browser Variable Dump tool
 
 ### 2022-01-15
