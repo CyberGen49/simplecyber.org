@@ -53,11 +53,13 @@ init.push(() => {
             let char = chars[randInt(0, (chars.length-1))];
             // Don't allow spaces to appear at the beginning or end of the password
             if (char == ' ' && (i == 0 || (i+1) == passLength)) continue;
-            // Don't allow uppercase I, lowercase L, or number 1 to appear in the
-            // same password
-            if (char.match(/^(Il)$/) && result.includes('1')) continue;
-            if (char.match(/^(1I)$/) && result.includes('l')) continue;
-            if (char.match(/^(l1)$/) && result.includes('I')) continue;
+            // Don't allow uppercase I, lowercase L, or number 1 in the same password
+            if (char.match(/^(I|l)$/) && result.includes('1')) continue;
+            if (char.match(/^(1|I)$/) && result.includes('l')) continue;
+            if (char.match(/^(l|1)$/) && result.includes('I')) continue;
+            // Don't allow number 0 and uppercase O in the same password
+            if (char.match(/^(0)$/) && result.includes('O')) continue;
+            if (char.match(/^(O)$/) && result.includes('0')) continue;
             // Add the character to the password and increment
             result.push(char);
             i++;

@@ -101,6 +101,11 @@ function randInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
+// Adds leading characters to a string to match a specified length
+function addLeadingZeroes(string, newLength = 2, char = "0") {
+    return string.toString().padStart(newLength, char);
+}
+
 // Checks if a string is a valid URL
 function isValidUrl(string) {
     let url;

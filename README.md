@@ -9,6 +9,10 @@ I initially intended to host this thing on GitHub Pages, but not having access t
 ## Changelog
 No versioning for now, but changes are separated by the day they were made, not necessarily committed. My days are split by sleep, not midnight, so these dates will tend to lag behind their respective commits.
 
+### 2022-01-18
+* Updated the Password Generator tool
+* Added the Stopwatch tool
+
 ### 2022-01-17
 * Added the Password Generator tool
 * Remembered that this changelog exists and updated it, using commit history for reference

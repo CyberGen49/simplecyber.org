@@ -43,7 +43,6 @@ tools:
     icon: timer
     href: /tools/stopwatch
     desc: "Start a stopwatch and keep track of laps."
-    disabled: true
   - name: Timer
     icon: timer
     href: /tools/timer

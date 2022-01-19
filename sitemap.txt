@@ -11,5 +11,6 @@ https://simplecyber.org/tools/port-checker
 https://simplecyber.org/tools/random-case
 https://simplecyber.org/tools/random-item
 https://simplecyber.org/tools/rng
+https://simplecyber.org/tools/stopwatch
 https://simplecyber.org/tools/text-analysis
 https://simplecyber.org/tools/unix-timestamp
