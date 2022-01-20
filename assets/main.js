@@ -6,8 +6,7 @@ function copyText(value) {
     console.log(value);
     showToast(`
         Text copied to clipboard!
-        <div class="desc">\"${escapeHtml(value)}\"</div>
-    `, 'inventory');
+    `, 'inventory', `\"${escapeHtml(value)}\"`);
 }
 
 // Shorthand function for document.getElementById()
@@ -241,11 +240,12 @@ function prepareForms() {
 }
 
 // Show and hide toast notifications
-function showToast(text, icon = 'info', duration = 3) {
+function showToast(text, icon = 'info', desc = null, danger = false, duration = 3) {
     let id = `toast-${Date.now()}`;
+    if (desc !== null) text += `<div class="desc">${desc}</div>`;
     if (duration == 0) text += `<div class="desc">Click here to dismiss</div>`;
     _id('toastContainer').insertAdjacentHTML('afterbegin', `
-        <div id="${id}" class="toast acrylic">
+        <div id="${id}" class="toast acrylic ${(danger ? 'danger' : '')}">
             <div class="icon">${icon}</div>
             <div class="text">${text}</div>
         </div>
@@ -256,9 +256,11 @@ function showToast(text, icon = 'info', duration = 3) {
         });
         _id(id).style.opacity = 1;
     }, 50);
-    setTimeout(() => {
-        hideToast(id);
-    }, (duration*1000));
+    if (duration > 0) {
+        setTimeout(() => {
+            hideToast(id);
+        }, (duration*1000));
+    }
 }
 function hideToast(id) {
     _id(id).style.opacity = 0;
@@ -290,6 +292,10 @@ var init = [];
 init.push(() => {
     document.getElementById("body").classList.remove("no-transitions");
     checkScroll();
+    // Show toast if on IE
+    if (!!document.documentMode) {
+        showToast("You're using Internet Explorer", 'error_outline', "Internet Explorer is becoming increasingly out of date and more dangerous to use. Please consider switching to a modern browser ASAP.", true, 0);
+    }
     // Run the checkScroll function on scroll
     document.addEventListener('scroll', function(e) {
         checkScroll();

@@ -99,6 +99,16 @@ else $webConf = $webConfDefault;
                 <br><a href="https://github.com/CyberGen49/simplecyber.org" target="_blank">View simplecyber.org on GitHub</a>
             </p>
         </div>
-        <div id="toastContainer"></div>
+        <div id="toastContainer">
+            <noscript>
+                <div class="toast acrylic danger" style="opacity: 1;">
+                    <div class="icon">error_outline</div>
+                    <div class="text">
+                        Javascript is disabled!
+                        <div class="desc">Most features of this site require Javascript. To get the most out of simplecyber.org, enable Javascript in your browser's settings, then reload the page.</div>
+                    </div>
+                </div>
+            </noscript>
+        </div>
     </body>
 </html>

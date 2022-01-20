@@ -9,6 +9,10 @@ I initially intended to host this thing on GitHub Pages, but not having access t
 ## Changelog
 No versioning for now, but changes are separated by the day they were made, not necessarily committed. My days are split by sleep, not midnight, so these dates will tend to lag behind their respective commits.
 
+### 2022-01-19
+* Added a toast notification that appears when Javascript is disabled (informing the user that most site functionality requires Javascript)
+* Added a toast notification that appears when using Internet Explorer (urging the user to switch to a modern browser)
+
 ### 2022-01-18
 * Updated the Password Generator tool
 * Added the Stopwatch tool

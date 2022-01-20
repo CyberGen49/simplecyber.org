@@ -364,6 +364,9 @@ body {
     font-size: 26px;
     color: var(--acc);
 }
+.toast.danger .icon {
+    color: #ffb9b9;
+}
 .toast .text {
     min-width: 0;
 }
@@ -589,6 +592,9 @@ body {
 /* Handle acrylic blur effect */
 .acrylic {
     background: var(--bgL);
+}
+.acrylic.danger {
+    background: #913e3e;
 }
 @supports ((-webkit-backdrop-filter: none) or (backdrop-filter: none)) {
     .acrylic {
