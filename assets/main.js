@@ -1,20 +1,30 @@
 
-// Copies the specified text to the clipboard
+// Copy text to the clipboard
 function copyText(value) {
     navigator.clipboard.writeText(value);
     console.log("Copied text to clipboard: ");
     console.log(value);
-    showToast(`
-        Text copied to clipboard!
-    `, 'inventory', `\"${escapeHtml(value)}\"`);
+    showToast("Text copied to clipboard!", 'inventory', `\"${escapeHtml(value)}\"`);
 }
 
-// Shorthand function for document.getElementById()
-function _id(id) {
-    return document.getElementById(id);
+// Shorthand function for *.getElementById()
+function _id(id, ancestor = document) {
+    return ancestor.getElementById(id);
+}
+// Shorthand function for *.getElementsByClassName()
+function _class(name, ancestor = document) {
+    return ancestor.getElementsByClassName(name);
+}
+// Shorthand function for *.getElementsByTagName()
+function _tag(tag, ancestor = document) {
+    return ancestor.getElementsByTagName(tag);
+}
+// Shorthand function for *.querySelectorAll()
+function _qSelA(tag, ancestor = document) {
+    return ancestor.querySelector(tag);
 }
 
-// Escapes HTML-sensitive characters
+// Escapes HTML entities characters
 function escapeHtml(text) {
     var map = {
         '&': '&amp;',
@@ -36,18 +46,19 @@ function countWords(s){
     //return s.split(' ').filter(String).length; - this can also be used
 }
 
-// Return a number with comma separators
+// Add commas to a large number
 function numberWithCommas(num) {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-// Rounds a number to a certain number of decimal places
+// Rounds a number to no more than a set number of decimal places
+// Passing a whole number, for example, will yield no decimal places
 function roundSmart(number, decimalPlaces = 0) {
     const factorOfTen = Math.pow(10, decimalPlaces)
     return Math.round(number * factorOfTen) / factorOfTen
 }
 
-// Get a query string parameter
+// Get a query string parameter from the URL
 function qs_param(name, url = window.location.href) {
     name = name.replace(/[\[\]]/g, '\\$&');
     let regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
@@ -62,7 +73,8 @@ function qs_param(name, url = window.location.href) {
     }
 }
 
-// Update the address bar
+// Update the address bar without reloading the page
+// When replace is disabled, the old URL is added to browser history
 function changeUrl(url, replace = false) {
     if (replace)
         history.replaceState(null, 'URL Replacement', url);
@@ -94,9 +106,10 @@ function array_shuffle(array) {
 }
 
 // Returns a random integer between min (inclusive) and max (exclusive)
+// If there are only two possible choices, handle things a little differently
 function randInt(min, max) {
     if ((max-min) == 1)
-        return ((Math.random() > 0.5) ? 1 : 0);
+        return ((Math.random() > 0.5) ? max : min);
     return Math.floor(Math.random() * (max - min)) + min;
 }
 
@@ -116,7 +129,7 @@ function isValidUrl(string) {
     return url.protocol === "http:" || url.protocol === "https:";
 }
 
-// Checks if a string is a valid hostname
+// Checks if a string is a valid hostname, excluding localhost
 function isValidHostname(string) {
     return string.match(/^(([a-zA-Z0-9]|[a-zA-Z0-9][a-zA-Z0-9\-]*[a-zA-Z0-9])\.)*([A-Za-z0-9]|[A-Za-z0-9][A-Za-z0-9\-]*[A-Za-z0-9])$/) && !string.match(/^localhost$/);
 }
@@ -126,10 +139,20 @@ function isValidIp(string) {
     return string.match(/((^\s*((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*$)|(^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$))/) && !string.match(/(^127\.)|(^10\.)|(^172\.1[6-9]\.)|(^172\.2[0-9]\.)|(^172\.3[0-1]\.)|(^192\.168\.)/) && !string.match(/^::1$/);
 }
 
+function pagePath() {
+    let split = window.location.pathname.split('/');
+    let final = '';
+    split.forEach((part) => {
+        if (part !== '') final += `/${part}`;
+    });
+    if (final === '') final = '/';
+    return final;
+}
+
 // Handle scrolling
 var lastScrollPos = 0;
 function checkScroll() {
-    return;
+    return; // We aren't doing this anymore
     let el = document.documentElement;
     let scrollPos = el.scrollTop;
     // Show the titlebar if we're less than 50px from the top, or if the
@@ -242,8 +265,15 @@ function prepareForms() {
 // Show and hide toast notifications
 function showToast(text, icon = 'info', desc = null, danger = false, duration = 3) {
     let id = `toast-${Date.now()}`;
-    if (desc !== null) text += `<div class="desc">${desc}</div>`;
-    if (duration == 0) text += `<div class="desc">Click here to dismiss</div>`;
+    if (desc !== null) {
+        if (Array.isArray(desc))
+            desc.forEach((part) => {
+                text += `<div class="desc">${part}</div>`;
+            });
+        else
+            text += `<div class="desc">${desc}</div>`;
+    }
+    if (duration == 0) text += `<div class="desc">Click here to dismiss.</div>`;
     _id('toastContainer').insertAdjacentHTML('afterbegin', `
         <div id="${id}" class="toast acrylic ${(danger ? 'danger' : '')}">
             <div class="icon">${icon}</div>
@@ -269,6 +299,81 @@ function hideToast(id) {
     }, 200);
 }
 
+// Handle getting and setting per-page local storage
+function setPageVar(name, value) {
+    let data = getPageVars();
+    if (data === null) data = {};
+    data[name] = value;
+    window.localStorage.setItem(window.location.pathname, JSON.stringify(data));
+}
+function delPageVar(name) {
+    let data = getPageVars();
+    if (data === null) data = {};
+    delete data[name];
+    if (Object.keys(data).length === 0)
+        window.localStorage.removeItem(window.location.pathname);
+    else
+        window.localStorage.setItem(window.location.pathname, JSON.stringify(data));
+}
+function getPageVar(name) {
+    let data = window.localStorage.getItem(window.location.pathname);
+    if (data === null) return null;
+    data = JSON.parse(data);
+    if (!data[name]) return null;
+    else return data[name];
+}
+function getPageVars() {
+    let data = window.localStorage.getItem(window.location.pathname);
+    if (data === null) return {};
+    else return JSON.parse(data);
+}
+
+// Fetch a URL and handle the response
+// https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch
+var fetchUrl_defaultHandlers = {
+    response: (response) => {
+        if (response.ok) return response.text();
+        else throw new Error(`Fetch failed with status code ${response.status}`);
+    },
+    data: (data) => {},
+    error: (error) => {
+        console.error(error);
+    }
+};
+async function fetchUrl(url, handlers = window.fetchUrl_defaultHandlers, options = {}){
+    handlers = {
+        ...window.fetchUrl_defaultHandlers,
+        ...handlers
+    };
+    console.log(handlers);
+    await fetch(url, options)
+        .then(handlers.response)
+        .then(handlers.data)
+        .catch(handlers.error);
+}
+
+// Fetch a URL and return the response
+// null will be returned if there's an error
+// Use await with this function
+async function fetchTextSimple(url, options = {}) {
+    return fetch(url, options).then((response) => {
+        return response.text();
+    }).then((data) => {
+        return data;
+    }).catch((error) => {
+        return false;
+    });
+}
+async function fetchJSONSimple(url, options = {}) {
+    return fetch(url, options).then((response) => {
+        return response.json();
+    }).then((data) => {
+        return data;
+    }).catch((error) => {
+        return false;
+    });
+}
+
 // Overwrite setInterval
 var setIntervalVanilla = setInterval;
 var globalIntervals = [];
@@ -289,7 +394,7 @@ function clearIntervals() {
 
 // Create the init array and add the main onload code to it
 var init = [];
-init.push(() => {
+init.push(async () => {
     document.getElementById("body").classList.remove("no-transitions");
     checkScroll();
     // Show toast if on IE
@@ -319,15 +424,45 @@ init.push(() => {
     }
     // Prepare form elements
     prepareForms();
-    // Set up our auto-saving localStorage variable
-    window.persistence = JSON.parse(window.localStorage.getItem('main'));
-    window.lastPersistence = window.persistence;
-    setIntervalVanilla(() => {
-        if (window.persistence != window.lastPersistence) {
-            window.localStorage.setItem('main', JSON.stringify(window.persistence));
-            console.log("Local storage updated");
-        }
-    }, 1000);
+    // Fetch content for Markdown file elements
+    let markdownEls = document.querySelectorAll('[data-content-markdown]');
+    for (i = 0; i < markdownEls.length; i++) {
+        let el = markdownEls[i];
+        el.innerHTML = marked.parse(
+            await fetchTextSimple(el.dataset.contentMarkdown)
+        );
+        el.style.opacity = 1;
+    }
+    // Update all a elements with rel=noopener, and target=_blank for absolute links
+    let anchors = document.getElementsByTagName('a');
+    for (i = 0; i < anchors.length; i++) {
+        let el = anchors[i];
+        el.rel = 'noreferrer';
+        let regex = new RegExp(`^${window.location.origin}.*$`, 'g')
+        if (!el.href.match(regex)) el.target = '_blank';
+    }
+    // Load Disqus embed if needed
+    if (_id('disqus_thread')) {
+        // Set Disqus variables
+        window.disqus_config = function () {
+            this.page.url = `https://simplecyber.org${pagePath()}`;
+            this.page.identifier = window.disqus_id;
+        };
+        // Load the embed
+        let d = document;
+        let s = d.createElement('script');
+        s.src = 'https://simplecyber-org.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        console.log(`Loading Disqus with thread ID '${disqus_id}'`);
+    }
+    // Restore scroll position
+    let scrollSave = getPageVar('scrollSave');
+    if (scrollSave) {
+        if ((Date.now()-scrollSave.time) < (1000*10))
+            window.scrollTo(0, scrollSave.pos);
+        delPageVar('scrollSave');
+    }
 });
 // On load
 window.addEventListener('load', () => {
@@ -336,6 +471,20 @@ window.addEventListener('load', () => {
         func();
     });
     console.log("Page loaded!");
+});
+
+// On error
+window.addEventListener('error', (error) => {
+    showToast(`Error - ${error.filename.split('/').reverse()[0]}:${error.lineno}`, 'error_outline', [`${error.message}`, 'See the DevTools console for details.'], true, 0);
+});
+
+// Before unload
+var showClosePrompt = false;
+window.addEventListener('beforeunload', () => {
+    setPageVar('scrollSave', {
+        pos: window.scrollY,
+        time: Date.now()
+    });
 });
 
 var humanTimezone = new window.Intl.DateTimeFormat().resolvedOptions().timeZone;

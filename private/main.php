@@ -54,7 +54,11 @@ else $webConf = $webConfDefault;
     </head>
     
     <body id="body" class="no-transitions">
+        <!-- Markdown parser -->
+        <script src="/assets/marked.min.js"></script>
+        <!-- Main Javascript -->
         <script src="/assets/main.js"></script>
+        <!-- Topbar -->
         <div id="topbar" class="row no-gutters acrylic">
             <div class="topbarButtonCont col-auto">
                 <button id="mainMenuButton" class="topbarButton material-icons">
@@ -63,6 +67,7 @@ else $webConf = $webConfDefault;
             </div>
             <h1 id="topbarTitle" class="col-auto"><a href="/">SimpleCyber.org</a></h1>
         </div>
+        <!-- Main menu -->
         <div id="mainMenuHitArea"></div>
         <div id="mainMenu" class="acrylic">
             <?php
@@ -82,12 +87,31 @@ else $webConf = $webConfDefault;
                 <?php endforeach ?>
             <?php endforeach ?>
         </div>
+        <!-- Header "jumbotron" -->
         <div id="headerCont">
             <div id="header">
                 <h1 id="title"><?= (($webConf['header'] !== '') ? $webConf['header'] : $webConf['metaTitle']) ?></h1>
             </div>
         </div>
-        <div id="main"><?= $output ?></div>
+        <!-- Main page content -->
+        <div id="main" class="container">
+            <?= $output ?>
+            <?php if (isset($webConf['disqusId'])): ?>
+                <h2>Let's talk about it</h2>
+                <p>
+                    Comments, suggestions, requests, and more are all welcome!
+                    <br><small>
+                        Ads that appear near this comment section are the responsibility of Disqus.
+                    </small>
+                </p>
+                <div id="disqus_thread"></div>
+                <script> var disqus_id = '<?= $webConf['disqusId'] ?>'; </script>
+                <noscript>
+                    <p>Javascript needs to be enabled to access the Disqus comment section.</p>
+                </noscript>
+            <?php endif ?>
+        </div>
+        <!-- Footer -->
         <div id="footer">
             <p>&copy; CyberOfficial <?= date('Y') ?></p>
             <p>
@@ -99,6 +123,7 @@ else $webConf = $webConfDefault;
                 <br><a href="https://github.com/CyberGen49/simplecyber.org" target="_blank">View simplecyber.org on GitHub</a>
             </p>
         </div>
+        <!-- Toast notification container -->
         <div id="toastContainer">
             <noscript>
                 <div class="toast acrylic danger" style="opacity: 1;">

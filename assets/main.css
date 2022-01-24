@@ -54,7 +54,9 @@ p:last-child, ul:last-child, ol:last-child {
     margin-bottom: 0px;
     padding-bottom: 0px;
 }
-
+ul, ol {
+    padding-left: 30px;
+}
 p, li {
     max-height: 99999px;
 }
@@ -554,6 +556,8 @@ body {
 }
 
 .form small {
+    width: 100%;
+    padding-top: 3px;
     padding-left: 5px;
 }
 
@@ -602,6 +606,13 @@ body {
         backdrop-filter: blur(12px);
         -webkit-backdrop-filter: blur(12px);
     }
+    .acrylic.danger {
+        background: rgba(145, 62, 62, 0.8);
+    }
+}
+
+.base64ToMarkdown {
+    opacity: 0;
 }
 
 /* Hides the element */

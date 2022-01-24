@@ -5,6 +5,7 @@ foreach ($menu['tools']['items'] as $tool) {
     trigger_error($tool['href']);
     if ($tool['href'] == "/tools/stopwatch") {
         $webConf = [
+            'disqusId' => 'tool-stopwatch',
             'pageTitle' => $tool['name'],
             'pageDesc' => $tool['desc']
         ];
@@ -13,21 +14,19 @@ foreach ($menu['tools']['items'] as $tool) {
 }
 ?>
 
-<div class="container">
     <h1>Keep track of elapsed time</h1>
     <p>This tool lets you keep track of elapsed time, with the added ability to log laps.</p>
     
-    <h1 id="result">00:00:00.000</h1>
-    <h1 id="lapTime" class="hidden"></h1>
-    <div class="form button section">
-        <button id="go" class="btn">Start</button>
-        <button id="reset" class="btn" disabled>Reset</button>
-        <button id="lap" class="btn" disabled>Lap</button>
-    </div>
-    <div id="lapsCont" class="hidden">
-        <h2>Laps</h2>
-        <div id="laps"></div>
-    </div>
+<h1 id="result">00:00:00.000</h1>
+<h1 id="lapTime" class="hidden"></h1>
+<div class="form button section">
+    <button id="go" class="btn">Start</button>
+    <button id="reset" class="btn" disabled>Reset</button>
+    <button id="lap" class="btn" disabled>Lap</button>
+</div>
+<div id="lapsCont" class="hidden">
+    <h2>Laps</h2>
+    <div id="laps"></div>
 </div>
 
 <style>

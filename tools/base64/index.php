@@ -5,6 +5,7 @@ foreach ($menu['tools']['items'] as $tool) {
     trigger_error($tool['href']);
     if ($tool['href'] == "/tools/base64") {
         $webConf = [
+            'disqusId' => 'tool-base64',
             'pageTitle' => $tool['name'],
             'pageDesc' => $tool['desc']
         ];
@@ -13,25 +14,23 @@ foreach ($menu['tools']['items'] as $tool) {
 }
 ?>
 
-<div class="container">
-    <h1>Convert to and from base64</h1>
-    <p>This tool will automatically convert plain text input to base64, or base64 input to plain text.</p>
-    
-    <h2>Plain text</h2>
-    <div class="form button">
-        <button id="copyText" class="btn" disabled>Copy</button>
-    </div>
-    <div class="form textInput section">
-        <textarea id="text" class="textbox" rows=12 placeholder="Type or paste your plain text here..."></textarea>
-    </div>
+<h1>Convert to and from base64</h1>
+<p>This tool will automatically convert plain text input to base64, or base64 input to plain text.</p>
 
-    <h2>Base64</h2>
-    <div class="form button">
-        <button id="copyBase64" class="btn" disabled>Copy</button>
-    </div>
-    <div class="form textInput section">
-        <textarea id="base64" class="textbox" rows=12 placeholder="Type or paste your base64 here..."></textarea>
-    </div>
+<h2>Plain text</h2>
+<div class="form button">
+    <button id="copyText" class="btn" disabled>Copy</button>
+</div>
+<div class="form textInput section">
+    <textarea id="text" class="textbox" rows=12 placeholder="Type or paste your plain text here..."></textarea>
+</div>
+
+<h2>Base64</h2>
+<div class="form button">
+    <button id="copyBase64" class="btn" disabled>Copy</button>
+</div>
+<div class="form textInput section">
+    <textarea id="base64" class="textbox" rows=12 placeholder="Type or paste your base64 here..."></textarea>
 </div>
 
 <script src="./tool.js"></script>

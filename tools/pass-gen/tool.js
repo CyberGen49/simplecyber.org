@@ -20,46 +20,69 @@ init.push(() => {
         _id('result').innerHTML = "Generating...";
         _id('resultCont').classList.remove('hidden');
         // Get character set
-        let chars = [];
+        let charSetPresets = {
+            'upper': 'ABCDEFGHJKLMNPQRSTUVWXYZ',
+            'lower': 'abcdefghijkmnopqrstuvwxyz',
+            'num': '0123456789',
+            'seps': '-_',
+            'punc': '.?!:,',
+            'sym': '@#$%^&*+=',
+            'slash': '/\\',
+            'quote': '"\'`',
+            'bracket': '()[]{}<>',
+            'spaces': ' ',
+        }
+        let charSets = [];
         window.formInput.charSets.forEach((set) => {
-            switch (set) {
-                case 'upper':
-                    chars = chars.concat('ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''));
-                    break;
-                case 'lower':
-                    chars = chars.concat('abcdefghijklmnopqrstuvwxyz'.split(''));
-                    break;
-                case 'num': chars = chars.concat('0123456789'.split('')); break;
-                case 'seps': chars = chars.concat('-_'.split('')); break;
-                case 'punc': chars = chars.concat('.?!:;,'.split('')); break;
-                case 'sym': chars = chars.concat('~@#$%^&*+'.split('')); break;
-                case 'slash': chars = chars.concat('/\\'.split('')); break;
-                case 'quote': chars = chars.concat('"\'`'.split('')); break;
-                case 'bracket': chars = chars.concat('()[]{}<>'.split('')); break;
-                case 'spaces': chars = chars.concat(' '.split('')); break;
-            };
+            let setArr = charSetPresets[set].split('');
+            for (i = 0; i < setArr.length; i++) {
+                charSets.push(charSetPresets[set].split(''));
+            }
         });
+        // Get all selected characters as a single array
+        const getCharList = (charSets) => {
+            let charList = [];
+            let addedSets = [];
+            charSets.forEach((set) => {
+                let setStr = set.join('');
+                if (!addedSets.includes(setStr)) {
+                    set.forEach((char) => { charList.push(char) });
+                    addedSets.push(setStr);
+                }
+            });
+            return charList;
+        };
+        let charList = getCharList(charSets);
         // Add extra characters if they aren't added already
-        if (window.extraChars.length > 0) window.extraChars.forEach((char) => {
-            if (!chars.includes(char)) chars.push(char);
-        });
+        if (window.extraChars.length > 0) {
+            let extraChars = [];
+            window.extraChars.forEach((char) => {
+                if (!charList.includes(char)) extraChars.push(char);
+            });
+            charSets.push(extraChars);
+        }
         // Generate the password
         let passLength = parseInt(_id('length').value);
+        let usedSets = [];
         let result = [];
-        console.log(`Generating a ${passLength} char password with chars: ${chars.join('')}`);
-        let i = 0;
-        while (i < passLength) {
+        console.log(`Generating a ${passLength} char password with chars: ${getCharList(charSets).join('')}`);
+        i = 0;
+        while (result.length < passLength) {
+            if (i > 10000) { result = "Loop overflow".split(''); break; }
+            // Pick a character set at random
+            let currentSet = charSets[randInt(0, (charSets.length-1))];
+            let currentSetStr = currentSet.join('');
+            // If we haven't used a character from all sets yet and this set has
+            // already been used, skip it
+            if (usedSets.length < window.formInput.charSets.length
+              && usedSets.includes(currentSetStr))
+                continue;
+            else
+                usedSets.push(currentSetStr);
             // Get the character
-            let char = chars[randInt(0, (chars.length-1))];
+            let char = currentSet[randInt(0, (currentSet.length-1))];
             // Don't allow spaces to appear at the beginning or end of the password
             if (char == ' ' && (i == 0 || (i+1) == passLength)) continue;
-            // Don't allow uppercase I, lowercase L, or number 1 in the same password
-            if (char.match(/^(I|l)$/) && result.includes('1')) continue;
-            if (char.match(/^(1|I)$/) && result.includes('l')) continue;
-            if (char.match(/^(l|1)$/) && result.includes('I')) continue;
-            // Don't allow number 0 and uppercase O in the same password
-            if (char.match(/^(0)$/) && result.includes('O')) continue;
-            if (char.match(/^(O)$/) && result.includes('0')) continue;
             // Add the character to the password and increment
             result.push(char);
             i++;

@@ -7,6 +7,9 @@ top:
   - name: Home
     icon: home
     href: /
+  - name: Changelog
+    icon: track_changes
+    href: /changelog
   - name: Tools overview
     icon: build
     href: /tools
@@ -117,8 +120,8 @@ tools:
     desc: "Check the status of a port on any IP address or hostname."
   - name: Twitch Chat GIF Generator
     icon: chat
-    href: /tools/twitch-chat-gif
-    desc: "Generate a fake scrolling Twitch chat GIF with your own messages."
+    href: /tools/twitch-gif
+    desc: "Generate a fake scrolling Twitch chat GIF with your own messages and usernames. Optionally, usernames can be fetched from the followers of a single channel."
     disabled: true
 
 extras:
@@ -127,4 +130,3 @@ extras:
   - name: View on GitHub
     icon: public
     href: https://github.com/CyberGen49/simplecyber.org
-    open: true

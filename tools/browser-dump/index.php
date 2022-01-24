@@ -5,6 +5,7 @@ foreach ($menu['tools']['items'] as $tool) {
     trigger_error($tool['href']);
     if ($tool['href'] == "/tools/browser-dump") {
         $webConf = [
+            'disqusId' => 'tool-browserDump',
             'pageTitle' => $tool['name'],
             'pageDesc' => $tool['desc']
         ];
@@ -13,68 +14,66 @@ foreach ($menu['tools']['items'] as $tool) {
 }
 ?>
 
-<div class="container">
-    <h1>Explore the data</h1>
-    <p>This tool will show you information about your system, browser, and network connection that any website can access.</p>
-    <p>Click any value to copy it.</p>
+<h1>Explore the data</h1>
+<p>This tool will show you information about your system, browser, and network connection that any website can access.</p>
+<p>Click any value to copy it.</p>
 
-    <h2>Network</h2>
-    <div class="statContainer">
-        <div class="statBox"><div class="dataName">IP address</div>
-            <div class="dataValue"><?= $_SERVER['HTTP_CF_CONNECTING_IP'] ?></div>
-        </div>
+<h2>Network</h2>
+<div class="statContainer">
+    <div class="statBox"><div class="dataName">IP address</div>
+        <div class="dataValue"><?= $_SERVER['HTTP_CF_CONNECTING_IP'] ?></div>
     </div>
+</div>
 
-    <h2>System</h2>
-    <div class="statContainer">
-        <div class="statBox"><div class="dataName">User agent string</div>
-            <div class="dataValue" data-js="window.navigator.userAgent"></div>
-        </div>
-        <div class="flexBreak"></div>
-        <div class="statBox"><div class="dataName">Browser</div>
-            <div class="dataValue" data-js="platform.name"></div>
-        </div>
-        <div class="statBox"><div class="dataName">Browser type</div>
-            <div class="dataValue" data-js="platform.layout"></div>
-        </div>
-        <div class="statBox"><div class="dataName">Operating system</div>
-            <div class="dataValue" data-js="platform.os.family+' '+platform.os.version"></div>
-        </div>
-        <div class="statBox"><div class="dataName">Architecture</div>
-            <div class="dataValue" data-js="platform.os.architecture+'-bit'"></div>
-        </div>
-        <div class="statBox"><div class="dataName">System manufacturer</div>
-            <div class="dataValue" data-js="platform.manufacturer"></div>
-        </div>
-        <div class="statBox"><div class="dataName">System model</div>
-            <div class="dataValue" data-js="platform.product"></div>
-        </div>
+<h2>System</h2>
+<div class="statContainer">
+    <div class="statBox"><div class="dataName">User agent string</div>
+        <div class="dataValue" data-js="window.navigator.userAgent"></div>
     </div>
+    <div class="flexBreak"></div>
+    <div class="statBox"><div class="dataName">Browser</div>
+        <div class="dataValue" data-js="platform.name"></div>
+    </div>
+    <div class="statBox"><div class="dataName">Browser type</div>
+        <div class="dataValue" data-js="platform.layout"></div>
+    </div>
+    <div class="statBox"><div class="dataName">Operating system</div>
+        <div class="dataValue" data-js="platform.os.family+' '+platform.os.version"></div>
+    </div>
+    <div class="statBox"><div class="dataName">Architecture</div>
+        <div class="dataValue" data-js="platform.os.architecture+'-bit'"></div>
+    </div>
+    <div class="statBox"><div class="dataName">System manufacturer</div>
+        <div class="dataValue" data-js="platform.manufacturer"></div>
+    </div>
+    <div class="statBox"><div class="dataName">System model</div>
+        <div class="dataValue" data-js="platform.product"></div>
+    </div>
+</div>
 
-    <h2>Display</h2>
-    <div class="statContainer">
-        <div class="statBox"><div class="dataName">Page Width</div>
-            <div class="dataValue" data-js="window.innerWidth+' px'"></div>
-        </div>
-        <div class="statBox"><div class="dataName">Page Height</div>
-            <div class="dataValue" data-js="window.innerHeight+' px'"></div>
-        </div>
-        <div class="flexBreak"></div>
-        <div class="statBox"><div class="dataName">Browser Width</div>
-            <div class="dataValue" data-js="window.outerWidth+' px'"></div>
-        </div>
-        <div class="statBox"><div class="dataName">Browser Height</div>
-            <div class="dataValue" data-js="window.outerHeight+' px'"></div>
-        </div>
-        <div class="flexBreak"></div>
-        <div class="statBox"><div class="dataName">Screen Width</div>
-            <div class="dataValue" data-js="screen.width+' px'"></div>
-        </div>
-        <div class="statBox"><div class="dataName">Screen Height</div>
-            <div class="dataValue" data-js="screen.height+' px'"></div>
-        </div>
-        <div class="flexBreak"></div>
+<h2>Display</h2>
+<div class="statContainer">
+    <div class="statBox"><div class="dataName">Page Width</div>
+        <div class="dataValue" data-js="window.innerWidth+' px'"></div>
     </div>
+    <div class="statBox"><div class="dataName">Page Height</div>
+        <div class="dataValue" data-js="window.innerHeight+' px'"></div>
+    </div>
+    <div class="flexBreak"></div>
+    <div class="statBox"><div class="dataName">Browser Width</div>
+        <div class="dataValue" data-js="window.outerWidth+' px'"></div>
+    </div>
+    <div class="statBox"><div class="dataName">Browser Height</div>
+        <div class="dataValue" data-js="window.outerHeight+' px'"></div>
+    </div>
+    <div class="flexBreak"></div>
+    <div class="statBox"><div class="dataName">Screen Width</div>
+        <div class="dataValue" data-js="screen.width+' px'"></div>
+    </div>
+    <div class="statBox"><div class="dataName">Screen Height</div>
+        <div class="dataValue" data-js="screen.height+' px'"></div>
+    </div>
+    <div class="flexBreak"></div>
 </div>
 
 <style>

@@ -15,12 +15,15 @@ init.push(() => {
             _id('go').disabled = false;
             if (window.items.length > 0) _id('go').disabled = false;
             else _id('go').disabled = true;
+            setPageVar('items', _id('items').value);
         });
     });
     _id('copy').addEventListener('click', () => {
         copyText(_id('result').innerHTML);
     });
     _id('go').addEventListener('click', choose);
+    _id('items').value = getPageVar('items');
+    _id('items').dispatchEvent(new Event('change'));
 });
 
 var items = [];

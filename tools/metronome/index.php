@@ -5,6 +5,7 @@ foreach ($menu['tools']['items'] as $tool) {
     trigger_error($tool['href']);
     if ($tool['href'] == "/tools/metronome") {
         $webConf = [
+            'disqusId' => 'tool-metronome',
             'pageTitle' => $tool['name'],
             'pageDesc' => $tool['desc']
         ];
@@ -13,46 +14,44 @@ foreach ($menu['tools']['items'] as $tool) {
 }
 ?>
 
-<div class="container">
-    <h1>Listen to a metronome</h1>
-    <p>This tool will play a metronome at any tempo. You can also change the number of beats per bar if your music uses a different time signature.</p>
-    <p>Press <b>Space</b> or <b>P</b> to quickly play/pause the metronome, and press <b>T</b> to the beat of a song to find its tempo. If you're on mobile, tap the button below the BPM textbox instead. The longer you tap, the more accurate the reading will become.</p>
+<h1>Listen to a metronome</h1>
+<p>This tool will play a metronome at any tempo. You can also change the number of beats per bar if your music uses a different time signature.</p>
+<p>Press <b>Space</b> or <b>P</b> to quickly play/pause the metronome, and press <b>T</b> to the beat of a song to find its tempo. If you're on mobile, tap the button below the BPM textbox instead. The longer you tap, the more accurate the reading will become.</p>
 
-    <div class="row no-gutters">
-        <div class="col-auto flexCenterVertical">
-            <button id="playPause">play_arrow</button>
-        </div>
-        <div class="col flexCenterVertical">
-            <div>
-                <h1 id="bigTempoCont">
-                    <span id="bigTempo">120</span>BPM
-                </h1>
-                <div id="beatIndicators">
-                    <div class="circle"></div>
-                    <div class="circle"></div>
-                    <div class="circle"></div>
-                    <div class="circle"></div>
-                </div>
+<div class="row no-gutters">
+    <div class="col-auto flexCenterVertical">
+        <button id="playPause">play_arrow</button>
+    </div>
+    <div class="col flexCenterVertical">
+        <div>
+            <h1 id="bigTempoCont">
+                <span id="bigTempo">120</span>BPM
+            </h1>
+            <div id="beatIndicators">
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
+                <div class="circle"></div>
             </div>
         </div>
     </div>
-    
-    <h2>Settings</h2>
-    <div class="row no-gutters">
-        <div class="col-sm-4">
-            <div class="form textInput">
-                <label>Tempo (BPM)</label>
-                <input id="tempo" type="number" class="textbox" value="120" placeholder=120>
-            </div>
-            <div class="form button section">
-                <button id="tapper" class="btn">Tap here or press T to the beat of a song to find its tempo</button>
-            </div>
+</div>
+
+<h2>Settings</h2>
+<div class="row no-gutters">
+    <div class="col-sm-4">
+        <div class="form textInput">
+            <label>Tempo (BPM)</label>
+            <input id="tempo" type="number" class="textbox" value="120" placeholder=120>
         </div>
-        <div class="col-sm-3">
-            <div class="form textInput section">
-                <label>Beats per bar</label>
-                <input id="beatCount" type="number" class="textbox" value="4" placeholder=4>
-            </div>
+        <div class="form button section">
+            <button id="tapper" class="btn">Tap here or press T to the beat of a song to find its tempo</button>
+        </div>
+    </div>
+    <div class="col-sm-3">
+        <div class="form textInput section">
+            <label>Beats per bar</label>
+            <input id="beatCount" type="number" class="textbox" value="4" placeholder=4>
         </div>
     </div>
 </div>
