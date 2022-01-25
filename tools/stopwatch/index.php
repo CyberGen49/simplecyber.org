@@ -33,8 +33,8 @@ foreach ($menu['tools']['items'] as $tool) {
     #result, #lapTime {
         color: #fff;
         line-height: 100%;
-        padding: 0px;
-        padding-bottom: 10px;
+        margin: 0px;
+        margin-bottom: 10px;
         font-size: 48px;
     }
     #lapTime {

@@ -53,7 +53,7 @@ foreach ($menu['tools']['items'] as $tool) {
 
 <div id="working"></div>
 
-<link href="/assets/gFonts/Inter.css" rel="stylesheet">
+<link href="/assets/fonts/Inter.css" rel="stylesheet">
 <script src="./tool.js"></script>
 
 <?php require($_SERVER['DOCUMENT_ROOT']."/private/main.php") ?>

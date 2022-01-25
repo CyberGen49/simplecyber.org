@@ -2,8 +2,19 @@
 # Changelog
 No versioning for now, but changes are separated by the day they were made, not necessarily committed. My days are split by sleep, not midnight, so these dates will tend to lag behind their respective commits, since I'm at my most productive long after midnight.
 
+## 2022-01-24
+* Added tooltips to all links that show the target URL
+* Started work on an article about how to create a Minecraft server
+* Updated headings to use `em` units for top and bottom padding
+    * This means all `h1`-`h6` elements get the same top and bottom padding, since `em` units are based on font size
+* Changed the name of the directory in which font CSS files are stored
+* Added styling for code blocks and inline code using [Microsoft's Cascadia Code monospace font](https://github.com/microsoft/cascadia-code)
+* Added styling for images, featuring rounded corners and a drop shadow
+    * All images are also made clickable, and when clicked, the image itself will be opened in a new tab
+
 ## 2022-01-23
 * Added Disqus comment sections to most pages
+* Made it so all links that go to external sites will open in a new tab, no matter what
 
 ## 2021-01-22
 * Now the changelog content is fetched after page load, making things a little easier

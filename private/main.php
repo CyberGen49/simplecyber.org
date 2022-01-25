@@ -44,11 +44,12 @@ else $webConf = $webConfDefault;
         <!-- Normalize.css -->
         <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" rel="stylesheet">
         <!-- Material Icon Fonts -->
-        <link href="/assets/gFonts/MaterialIcons.css" rel="stylesheet">
-        <link href="/assets/gFonts/MaterialIconsOutline.css" rel="stylesheet">
+        <link href="/assets/fonts/MaterialIcons.css" rel="stylesheet">
+        <link href="/assets/fonts/MaterialIconsOutline.css" rel="stylesheet">
         <!-- Fonts -->
-        <link href="/assets/gFonts/Quicksand.css" rel="stylesheet">
-        <link href="/assets/gFonts/Sora.css" rel="stylesheet">
+        <link href="/assets/fonts/Quicksand.css" rel="stylesheet">
+        <link href="/assets/fonts/Sora.css" rel="stylesheet">
+        <link href="/assets/fonts/CascadiaCode.css" rel="stylesheet">
         <!-- Style -->
         <link href="/assets/main.css" rel="stylesheet">
     </head>
@@ -97,11 +98,11 @@ else $webConf = $webConfDefault;
         <div id="main" class="container">
             <?= $output ?>
             <?php if (isset($webConf['disqusId'])): ?>
-                <h2>Let's talk about it</h2>
+                <h1>Let's talk about it</h1>
                 <p>
-                    Comments, suggestions, requests, and more are all welcome!
+                    Share your likes, dislikes, comments, suggestions, requests, and more down below! If you have something to say but don't want to put it in this public thread, feel free to fill out <a href="/contact">the Contact form</a>.
                     <br><small>
-                        Ads that appear near this comment section are the responsibility of Disqus.
+                        Disqus is responsible for ads that appear near this comment section.
                     </small>
                 </p>
                 <div id="disqus_thread"></div>

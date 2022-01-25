@@ -439,7 +439,28 @@ init.push(async () => {
         let el = anchors[i];
         el.rel = 'noreferrer';
         let regex = new RegExp(`^${window.location.origin}.*$`, 'g')
-        if (!el.href.match(regex)) el.target = '_blank';
+        let title = '';
+        if (el.hasAttribute('title')) title = `${el.title}\n\n`;
+        if (!el.href.match(regex)) {
+            el.target = '_blank';
+            el.title = `${title}Click to open this link in a new tab:\n${el.href}`;
+        } else {
+            if (el.hasAttribute('download'))
+                el.title = `${title}Click to download this file:\n${el.href}`;
+            else
+                el.title = `${title}${el.href}`;
+        }
+    }
+    // Make all img elements clickable
+    let images = document.getElementsByTagName('img');
+    for (i = 0; i < images.length; i++) {
+        let el = images[i];
+        let title = '';
+        if (el.hasAttribute('alt')) title = `${el.alt}\n\n`
+        el.title += `Click to view this image in a new tab:\n${el.src}`;
+        el.addEventListener('click', () => {
+            redirect(el.src, true);
+        });
     }
     // Load Disqus embed if needed
     if (_id('disqus_thread')) {
