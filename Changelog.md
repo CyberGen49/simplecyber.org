@@ -2,6 +2,14 @@
 # Changelog
 No versioning for now, but changes are separated by the day they were made, not necessarily committed. My days are split by sleep, not midnight, so these dates will tend to lag behind their respective commits, since I'm at my most productive long after midnight.
 
+[View on simplecyber.org](https://simplecyber.org/changelog)  
+[View on GitHub](https://github.com/CyberGen49/simplecyber.org/blob/main/Changelog.md)
+
+## 2022-01-25
+* Continued work on the Minecraft server article
+* Added HTTP error handling to the simple fetch JS functions
+* Started work on a contact form
+
 ## 2022-01-24
 * Added tooltips to all links that show the target URL
 * Started work on an article about how to create a Minecraft server

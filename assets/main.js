@@ -357,7 +357,8 @@ async function fetchUrl(url, handlers = window.fetchUrl_defaultHandlers, options
 // Use await with this function
 async function fetchTextSimple(url, options = {}) {
     return fetch(url, options).then((response) => {
-        return response.text();
+        if (response.ok) return response.text();
+        else throw new Error();
     }).then((data) => {
         return data;
     }).catch((error) => {
@@ -366,7 +367,8 @@ async function fetchTextSimple(url, options = {}) {
 }
 async function fetchJSONSimple(url, options = {}) {
     return fetch(url, options).then((response) => {
-        return response.json();
+        if (response.ok) return response.json();
+        else throw new Error();
     }).then((data) => {
         return data;
     }).catch((error) => {
@@ -429,7 +431,7 @@ init.push(async () => {
     for (i = 0; i < markdownEls.length; i++) {
         let el = markdownEls[i];
         el.innerHTML = marked.parse(
-            await fetchTextSimple(el.dataset.contentMarkdown)
+            await fetchTextSimple(el.dataset.contentMarkdown, {mode: 'no-cors'})
         );
         el.style.opacity = 1;
     }
@@ -493,6 +495,12 @@ window.addEventListener('load', () => {
     });
     console.log("Page loaded!");
 });
+
+// Stop scroll position restoration
+if ('scrollRestoration' in history) {
+    // Back off, browser, I got this...
+    history.scrollRestoration = 'manual';
+}
 
 // On error
 window.addEventListener('error', (error) => {

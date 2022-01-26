@@ -83,3 +83,42 @@ Once the server console reads `Done (XX.XXXs)! For help, type "help"` (highlight
 ![The server starting fully](./files/consoleDone.png)
 
 ## Test out the server
+Before we join the server, we need to identify the address you'll join it with.
+
+If you're running rhe server on a different computer on your network, find that computer's operating system below and follow the steps to get its private IP.
+
+If you're running the server and playing on the same computer, you'll just use `localhost` as the address.
+
+> ### On Windows
+> * Open **Settings**, then **Network**
+> * Click **Wi-Fi** or **Ethernet**, whichever you're connected to
+> * Find the **IPv4 address** line and make note of that value, for example, `192.168.1.23`
+
+> ### On macOS
+> * Open **System Preferences**, then **Network**
+> * Select your active network
+> * Find the line that mentions your IP address and make note of that value, for example, `192.168.1.23`
+
+> ### On Linux
+> *These steps will vary depending on your distribution*
+> * Open your terminal and run `ip a`
+> * Find your active network, then find the `inet` line and make note of the first value, for example, `192.168.1.23`
+
+With the server running and our address on hand, open up Minecraft, then head to **Multiplayer > Direct Connect**. Enter the address we identified above, then click **Join Server**.
+
+![Enter a server address into Direct Connect](./files/joiningServer.png)
+
+If everything's working properly, you should be dropped into a new world!
+
+## Let others join your server
+In order to let anyone outside your network join your server, we have to open its port using your internet router. 
+
+The process of port forwarding differs between router manufacturers and models, and, as mentioned up in the disclaimers, your ISP may block you from forwarding your own ports.
+
+The following steps are specific to my router, so you may need to look up how to access and use your router's web interface.
+
+We'll start by navigating to the router's private IP address (AKA default gateway) in our web browser. In my case, that's `192.168.1.1`. Once we get there, we'll log in with our credentials. Again, these will differ depending on your router, and aren't the same as your network name and password.
+
+![Log into the router's web interface](./files/logIntoRouter.png)
+
+Once we're in the router's web interface, we'll navigate to the Port Forwarding section. On this router, it's under the **Advanced** tab, then the **Advanced** section, then the **Port Forwarding / Port Triggering** tab.
