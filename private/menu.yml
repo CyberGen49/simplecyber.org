@@ -1,18 +1,26 @@
 
-# Menu
+# Menus
 
-top:
+main:
   name: Main menu
   items:
   - name: Home
     icon: home
     href: /
-  - name: Changelog
-    icon: track_changes
-    href: /changelog
+  - name: Contact
+    icon: contact_page
+    href: /contact
   - name: Tools overview
     icon: build
     href: /tools
+  - name: All tools...
+    icon: build
+    openMenu: tools
+    disabled: true
+  - name: Articles...
+    icon: article
+    openMenu: articles
+    disabled: true
 
 tools:
   name: Tools
@@ -127,6 +135,9 @@ tools:
 extras:
   name: Extras
   items:
+  - name: Changelog
+    icon: track_changes
+    href: /changelog
   - name: View on GitHub
     icon: public
     href: https://github.com/CyberGen49/simplecyber.org

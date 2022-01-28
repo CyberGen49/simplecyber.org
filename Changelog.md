@@ -5,6 +5,9 @@ No versioning for now, but changes are separated by the day they were made, not 
 [View on simplecyber.org](https://simplecyber.org/changelog)  
 [View on GitHub](https://github.com/CyberGen49/simplecyber.org/blob/main/Changelog.md)
 
+## 2022-01-26
+* Completed the Contact form
+
 ## 2022-01-25
 * Continued work on the Minecraft server article
 * Added HTTP error handling to the simple fetch JS functions

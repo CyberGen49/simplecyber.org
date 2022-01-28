@@ -139,6 +139,23 @@ function isValidIp(string) {
     return string.match(/((^\s*((([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5]))\s*$)|(^\s*((([0-9A-Fa-f]{1,4}:){7}([0-9A-Fa-f]{1,4}|:))|(([0-9A-Fa-f]{1,4}:){6}(:[0-9A-Fa-f]{1,4}|((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){5}(((:[0-9A-Fa-f]{1,4}){1,2})|:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3})|:))|(([0-9A-Fa-f]{1,4}:){4}(((:[0-9A-Fa-f]{1,4}){1,3})|((:[0-9A-Fa-f]{1,4})?:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){3}(((:[0-9A-Fa-f]{1,4}){1,4})|((:[0-9A-Fa-f]{1,4}){0,2}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){2}(((:[0-9A-Fa-f]{1,4}){1,5})|((:[0-9A-Fa-f]{1,4}){0,3}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(([0-9A-Fa-f]{1,4}:){1}(((:[0-9A-Fa-f]{1,4}){1,6})|((:[0-9A-Fa-f]{1,4}){0,4}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:))|(:(((:[0-9A-Fa-f]{1,4}){1,7})|((:[0-9A-Fa-f]{1,4}){0,5}:((25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)(\.(25[0-5]|2[0-4]\d|1\d\d|[1-9]?\d)){3}))|:)))(%.+)?\s*$))/) && !string.match(/(^127\.)|(^10\.)|(^172\.1[6-9]\.)|(^172\.2[0-9]\.)|(^172\.3[0-1]\.)|(^192\.168\.)/) && !string.match(/^::1$/);
 }
 
+// Checks if a string is a valid email address
+function isValidEmail(email) {
+    let match = email.match(
+        /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+    if (match) return true;
+    else return false;
+};
+
+// Checks if a string is a valid Discord username#tag
+function isValidDiscord(userAndTag) {
+    let match = userAndTag.match(/^.{3,32}#[0-9]{4}$/);
+    if (match) return true;
+    else return false;
+};
+
+// Returns a consistently formatted string of the current path
 function pagePath() {
     let split = window.location.pathname.split('/');
     let final = '';
@@ -369,6 +386,37 @@ async function fetchJSONSimple(url, options = {}) {
     return fetch(url, options).then((response) => {
         if (response.ok) return response.json();
         else throw new Error();
+    }).then((data) => {
+        return data;
+    }).catch((error) => {
+        return false;
+    });
+}
+
+// Post JSON data to a URL and return the response as an object
+var postJSONSimple_defaultOptions = {
+    method: 'post',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: '{}'
+};
+async function postJSONSimple(url, object = {}, options = window.postJSONSimple_defaultOptions, returnDataOnError = false) {
+    options = {
+        ...window.postJSONSimple_defaultOptions,
+        ...options
+    };
+    options.body = JSON.stringify(object);
+    return fetch(url, options).then((response) => {
+        if (response.ok) return response.json();
+        else {
+            if (returnDataOnError) {
+                let json = response.json();
+                json._httpResponseCode = response.status;
+                return json;
+            } else
+                throw new Error();
+        }
     }).then((data) => {
         return data;
     }).catch((error) => {

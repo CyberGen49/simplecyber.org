@@ -8,6 +8,7 @@
     --fg: #fff;
     --fgD: #d2d4e0;
     --fgDD: #a7a8b1;
+    --fgErr: rgb(255, 104, 104);
 }
 
 * {
@@ -610,6 +611,10 @@ body {
     width: 100%;
     padding-top: 3px;
     padding-left: 5px;
+}
+
+.dangerText {
+    color: var(--fgErr);
 }
 
 /* Handle touch devices */
