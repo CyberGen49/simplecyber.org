@@ -10,10 +10,10 @@ $webConf = [
 <h1>All tools</h1>
 <p>Every tool listed here is completed and ready for use. You can also access all of these tools from the main menu (top left), but greyed out entries aren't finished yet. The menu will give you an idea of what I've got planned, though.</p>
 <div style="height: 8px"></div>
-<?php foreach ($menu['tools']['items'] as $item): ?>
+<?php foreach ($menu['tools'] as $item): ?>
     <?php if ($item['disabled']) continue ?>
     <a class="projectCard" href="<?= $item['href'] ?>">
-        <h1><?= $item['name'] ?></h1>
+        <h1><?= $item['text'] ?></h1>
         <p><?= $item['desc'] ?></p>
     </a>
 <?php endforeach ?>

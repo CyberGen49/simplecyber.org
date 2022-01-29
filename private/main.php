@@ -68,26 +68,6 @@ else $webConf = $webConfDefault;
             </div>
             <h1 id="topbarTitle" class="col-auto"><a href="/">SimpleCyber.org</a></h1>
         </div>
-        <!-- Main menu -->
-        <div id="mainMenuHitArea"></div>
-        <div id="mainMenu" class="acrylic">
-            <?php
-            $keys = array_keys($menu);
-            ?>
-            <?php foreach ($keys as $k): $section = $menu[$k]; ?>
-                <?php if (isset($section['name'])): ?>
-                    <div class="sectionHead"><?= $section['name'] ?></div>
-                <?php endif ?>
-                <?php foreach ($section['items'] as $item): ?>
-                    <a class="item row no-gutters <?php (isset($item['disabled']) ? print('disabled') : print('')) ?>" <?php (!isset($item['disabled']) ? print("href=\"{$item['href']}\"") : print('')) ?> <?php (isset($item['open']) ? print('target=_blank') : print('')) ?> <?php (isset($item['desc']) ? print("title=\"{$item['name']}\n{$item['desc']}\"") : print("title=\"{$item['name']}\"")) ?>>
-                        <div class="icon col-auto material-icons"><?= $item['icon'] ?></div>
-                        <div class="name col">
-                            <?= $item['name'] ?>
-                        </div>
-                    </a>
-                <?php endforeach ?>
-            <?php endforeach ?>
-        </div>
         <!-- Header "jumbotron" -->
         <div id="headerCont">
             <div id="header">
@@ -136,5 +116,7 @@ else $webConf = $webConfDefault;
                 </div>
             </noscript>
         </div>
+        <!-- Store the private menu data for use on the client -->
+        <div data-menu-index="<?= base64_encode(json_encode($menu)) ?>"></div>
     </body>
 </html>

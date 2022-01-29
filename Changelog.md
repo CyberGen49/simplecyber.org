@@ -5,6 +5,12 @@ No versioning for now, but changes are separated by the day they were made, not 
 [View on simplecyber.org](https://simplecyber.org/changelog)  
 [View on GitHub](https://github.com/CyberGen49/simplecyber.org/blob/main/Changelog.md)
 
+## 2022-01-28
+* Revamped the main menu open and close animation
+* Now menus are generated on the fly on the clientside
+    * Menu data isn't fetched (which is probably what should be done), instead, it's encoded as base64 and put into a data attribute, to then be decoded by the client. All that means is that there's no extra waiting time on the clientside, and we can continue storing the menu index as YAML on the server.
+* Added a small vibration when tapping buttons and menu items using the vibration API
+
 ## 2022-01-26
 * Completed the Contact form
 

@@ -1,12 +1,12 @@
 <?php
 ob_start();
 require($_SERVER['DOCUMENT_ROOT']."/private/utils.php");
-foreach ($menu['tools']['items'] as $tool) {
+foreach ($menu['tools'] as $tool) {
     trigger_error($tool['href']);
     if ($tool['href'] == "/tools/text-analysis") {
         $webConf = [
             'disqusId' => 'tool-textAnalysis',
-            'pageTitle' => $tool['name'],
+            'pageTitle' => $tool['text'],
             'pageDesc' => $tool['desc']
         ];
         break;

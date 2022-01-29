@@ -8,6 +8,7 @@ Let's get started!
 * Be sure you know what operating system you're running (typically Windows or macOS), as some things may vary between these systems. When that's the case, there will be instructions for each operating system.
 * All of the software listed below is free. You shouldn't need to pay anything to get your server going from home (other than power and internet, of course).
 * You'll always be able to join your server on your local network, but your internet service provider (ISP) may not allow you to make it public on the internet, meaning anyone outside your network won't be able to join.
+* This guide assumes that you're planning on hosting this server from your home network and on a computer that you have physical access to. If you've rented a server from a 3rd party host, some of these steps may not apply.
 
 ## Software
 ### Required

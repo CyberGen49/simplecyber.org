@@ -203,8 +203,7 @@ body {
     background: rgba(255, 255, 255, 0.2);
 }
 
-#mainMenuHitArea {
-    display: none;
+.menuArea {
     position: fixed;
     top: 0px;
     left: 0px;
@@ -213,27 +212,27 @@ body {
     z-index: 11;
 }
 
-#mainMenu {
+.menu {
     position: fixed;
     margin: 10px;
     padding: 5px;
     top: 55px;
-    left: -600px;
+    left: 0px;
     max-width: calc(100% - 20px);
-    max-height: calc(100% - 75px);
+    max-height: 0px;
     border-radius: 8px;
     box-shadow: 0px 2px 10px 2px rgba(0, 0, 0, 0.2);
-    z-index: 11;
     user-select: none;
     opacity: 0;
     overflow-y: scroll;
     scrollbar-width: none;
+    transition: 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
 }
-#mainMenu::-webkit-scrollbar {
+.menu::-webkit-scrollbar {
     width: 0px;
 }
 
-#mainMenu .sectionHead {
+.menu .sectionHead {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -242,7 +241,7 @@ body {
     font-size: 15px;
 }
 
-#mainMenu .item {
+.menu .item {
     overflow: hidden;
     flex-wrap: nowrap;
     max-width: 500px;
@@ -251,20 +250,21 @@ body {
     border-radius: 6px;
     background: none;
     cursor: default;
+    pointer-events: all;
 }
-#mainMenu .item:hover:not(.disabled),
-#mainMenu .item:focus:not(.disabled) {
+.menu .item:hover:not(.disabled),
+.menu .item:focus:not(.disabled) {
     background: rgba(255, 255, 255, 0.1);
     text-decoration: none;
 }
-#mainMenu .item:active:not(.disabled) {
+.menu .item:active:not(.disabled) {
     background: rgba(255, 255, 255, 0.2);
 }
-#mainMenu .item.disabled {
+.menu .item.disabled {
     opacity: 50%;
 }
 
-#mainMenu .item .icon {
+.menu .item .icon {
     display: flex;
     align-items: center;
     color: var(--acc);
@@ -272,7 +272,7 @@ body {
     font-family: 'Material Icons Outlined';
 }
 
-#mainMenu .item .name {
+.menu .item .name {
     padding-left: 10px;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -619,21 +619,21 @@ body {
 
 /* Handle touch devices */
 @media (hover: none) and (pointer: coarse) {    
-    #mainMenu .sectionHead {
+    .menu .sectionHead {
         font-size: 16px;
         padding-bottom: 2px;
         padding-top: 10px;
     }
     
-    #mainMenu .item {
+    .menu .item {
         padding: 10px 10px 9px 10px;
     }
     
-    #mainMenu .item .icon {
+    .menu .item .icon {
         font-size: 28px;
     }
     
-    #mainMenu .item .name {
+    .menu .item .name {
         font-size: 17px;
     }
 }

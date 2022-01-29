@@ -166,6 +166,29 @@ function pagePath() {
     return final;
 }
 
+// Update the attributes of <a> elements
+function updateAnchors() {
+    let anchors = document.getElementsByTagName('a');
+    for (i = 0; i < anchors.length; i++) {
+        let el = anchors[i];
+        if (!el.hasAttribute('href')) continue;
+        el.rel = 'noreferrer';
+        let regex = new RegExp(`^${window.location.origin}.*$`, 'g')
+        let title = '';
+        if (el.hasAttribute('title')) title = `${el.title}\n\n`;
+        if (!el.href.match(regex)) {
+            el.target = '_blank';
+            el.title = `${title}Click to open this link in a new tab:\n${el.href}`;
+        } else {
+            if (el.hasAttribute('download'))
+                el.title = `${title}Click to download this file:\n${el.href}`;
+            else
+                el.title = `${title}${el.href}`;
+        }
+    }
+    console.log(`Updated ${anchors.length} <a> element(s)`);
+}
+
 // Handle scrolling
 var lastScrollPos = 0;
 function checkScroll() {
@@ -187,23 +210,84 @@ function checkScroll() {
 }
 
 // Show and hide the main menu
-var mainMenuTimeout;
-function showMainMenu() {
-    clearTimeout(window.mainMenuTimeout);
-    _id('mainMenuHitArea').style.display = 'block';
-    window.mainMenuTimeout = setTimeout(() => {
-        _id('mainMenu').style.transition = '0.3s cubic-bezier(0.4, 0.0, 0.2, 1)';
-        _id('mainMenu').style.left = '0px';
-        _id('mainMenu').style.opacity = 1;
+var mainMenuTimeout = {};
+function showMenu(data, anchorElement = null) {
+    let menuId = `menu-${Date.now()}`;
+    clearTimeout(window.mainMenuTimeout[menuId]);
+    _id('body').insertAdjacentHTML('beforeend', `
+        <div id="${menuId}" class="menuArea">
+            <div id="${menuId}-inner" class="menu acrylic"></div>
+        </div>
+    `);
+    let i = 0;
+    data.forEach((item) => {
+        switch (item.type) {
+            case 'header':
+                _id(`${menuId}-inner`).insertAdjacentHTML('beforeend', `
+                    <div class="sectionHead">${item.text}</div>
+                `);
+                break;
+            case 'item':
+                _id(`${menuId}-inner`).insertAdjacentHTML('beforeend', `
+                    <a id="${menuId}-inner-${i}"
+                        class="item row no-gutters ${(item.disabled) ? 'disabled':''}"
+                        ${(!item.disabled && !item.openMenu) ? `href="${item.href}"`:''}
+                        title="${item.text}${(item.desc) ? `\n${item.desc}`:''}">
+                        <div class="icon col-auto material-icons">${item.icon}</div>
+                        <div class="name col">${item.text}</div>
+                    </a>
+                `);
+                if (!item.disabled) {
+                    _id(`${menuId}-inner-${i}`).addEventListener('click', () => {
+                        window.navigator.vibrate(2);
+                        hideMenu(menuId);
+                        if (item.openMenu) {
+                            let sections = item.openMenu.split(',');
+                            let newMenu = [];
+                            sections.forEach((section) => {
+                                newMenu = newMenu.concat(window.menuStore[section])
+                            });
+                            let menu = [];
+                            if (item.openMenuRef) {
+                                menu = [{
+                                    type: 'item',
+                                    text: 'Back...',
+                                    icon: 'arrow_back',
+                                    openMenu: item.openMenuRef
+                                }].concat(newMenu);
+                            } else menu = newMenu;
+                            showMenu(menu);
+                        }
+                    });
+                }
+                break;
+        }
+        i++;
+    });
+    updateAnchors()
+    _id(menuId).addEventListener('click', () => {
+        hideMenu(menuId);
+    });
+    window.mainMenuTimeout[menuId] = setTimeout(() => {
+        _id(`${menuId}-inner`).style.maxHeight = 'calc(100% - 75px)';
+        _id(`${menuId}-inner`).style.opacity = 1;
     }, 50);
+    return menuId;
 }
-function hideMainMenu() {
-    _id('mainMenu').style.left = '';
-    _id('mainMenu').style.opacity = '';
-    window.mainMenuTimeout = setTimeout(() => {
-        _id('mainMenuHitArea').style.display = '';
-        _id('mainMenu').style.transition = '';
+function hideMenu(menuId) {
+    clearTimeout(window.mainMenuTimeout[menuId]);
+    _id(`${menuId}-inner`).style.opacity = '';
+    _id(`${menuId}-inner`).style.maxHeight = '';
+    window.mainMenuTimeout[menuId] = setTimeout(() => {
+        _id(menuId).remove();
     }, 300);
+}
+
+function showMainMenu() {
+    let data = [];
+    data = data.concat(window.menuStore.main);
+    data = data.concat(window.menuStore.extras);
+    showMenu(data);
 }
 
 // Make custom form elements functional
@@ -455,24 +539,15 @@ init.push(async () => {
     document.addEventListener('scroll', function(e) {
         checkScroll();
     });
+    // Load menu data
+    let menuDataEl = document.querySelector('[data-menu-index]');
+    window.menuStore = JSON.parse(atob(menuDataEl.dataset.menuIndex));
+    menuDataEl.remove();
     // Make the menu button clickable
     _id('mainMenuButton').addEventListener('click', function() {
         this.blur();
         showMainMenu();
     });
-    _id('mainMenuHitArea').addEventListener('click', function() {
-        hideMainMenu();
-    });
-    // Make all menu items hide the menu when clicked
-    let mainMenuItems = _id('mainMenu').getElementsByClassName('item');
-    for (i = 0; i < mainMenuItems.length; i++) {
-        let item = mainMenuItems[i];
-        if (item.classList.contains('disabled')) continue;
-        item.addEventListener('click', function() {
-            hideMainMenu();
-        });
-    }
-    // Prepare form elements
     prepareForms();
     // Fetch content for Markdown file elements
     let markdownEls = document.querySelectorAll('[data-content-markdown]');
@@ -484,23 +559,7 @@ init.push(async () => {
         el.style.opacity = 1;
     }
     // Update all a elements with rel=noopener, and target=_blank for absolute links
-    let anchors = document.getElementsByTagName('a');
-    for (i = 0; i < anchors.length; i++) {
-        let el = anchors[i];
-        el.rel = 'noreferrer';
-        let regex = new RegExp(`^${window.location.origin}.*$`, 'g')
-        let title = '';
-        if (el.hasAttribute('title')) title = `${el.title}\n\n`;
-        if (!el.href.match(regex)) {
-            el.target = '_blank';
-            el.title = `${title}Click to open this link in a new tab:\n${el.href}`;
-        } else {
-            if (el.hasAttribute('download'))
-                el.title = `${title}Click to download this file:\n${el.href}`;
-            else
-                el.title = `${title}${el.href}`;
-        }
-    }
+    updateAnchors();
     // Make all img elements clickable
     let images = document.getElementsByTagName('img');
     for (i = 0; i < images.length; i++) {
@@ -510,6 +569,14 @@ init.push(async () => {
         el.title += `Click to view this image in a new tab:\n${el.src}`;
         el.addEventListener('click', () => {
             redirect(el.src, true);
+        });
+    }
+    // Make all button elements vibrate
+    let buttons = document.getElementsByTagName('button');
+    for (i = 0; i < buttons.length; i++) {
+        let el = buttons[i];
+        el.addEventListener('click', () => {
+            window.navigator.vibrate(2);
         });
     }
     // Load Disqus embed if needed

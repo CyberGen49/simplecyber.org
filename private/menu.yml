@@ -1,143 +1,174 @@
 
-# Menus
+# Page Index
+# This file serves to store page names and descriptions in one place, instead of having to copy and paste all over the place
 
 main:
-  name: Main menu
-  items:
-  - name: Home
+  - type: header
+    text: Main menu
+  - type: item
+    text: Home
     icon: home
     href: /
-  - name: Contact
+  - type: item
+    text: Contact
     icon: contact_page
     href: /contact
-  - name: Tools overview
+  - type: item
+    text: Tools overview
     icon: build
     href: /tools
-  - name: All tools...
+  - type: item
+    text: All tools...
     icon: build
     openMenu: tools
-    disabled: true
-  - name: Articles...
+    openMenuRef: main,extras
+  - type: item
+    text: Articles...
     icon: article
-    openMenu: articles
     disabled: true
 
+extras:
+  - type: header
+    text: Extras
+  - type: item
+    text: Changelog
+    icon: track_changes
+    href: /changelog
+  - type: item
+    text: View on GitHub
+    icon: public
+    href: https://github.com/CyberGen49/simplecyber.org
+
 tools:
-  name: Tools
-  items:
-  - name: Text Analysis
+  - type: header
+    text: Tools
+  - type: item
+    text: Text Analysis
     icon: insights
     href: /tools/text-analysis
     desc: "Get all kinds of stats about any piece of text, including character, word, and line counts, along with the frequency of each word and character."
-  - name: Find and Replace
+  - type: item
+    text: Find and Replace
     icon: manage_search
     href: /tools/find-and-replace
     desc: "Count occurrences, find and replace results, and use RegEx search on a piece of text."
     disabled: true
-  - name: Line Sorter
+  - type: item
+    text: Line Sorter
     icon: sort
     href: /tools/line-sorter
     desc: "Sort any number of lines alphabetically or by length."
-  - name: Base64 Encode and Decode
+  - type: item
+    text: Base64 Encode and Decode
     icon: integration_instructions
     href: /tools/base64
     desc: "Encode and decode text in base64."
-  - name: Random Case
+  - type: item
+    text: Random Case
     icon: text_fields
     href: /tools/random-case
     desc: "Randomize the case of letters in a piece of text."
-  - name: Password Generator
+  - type: item
+    text: Password Generator
     icon: password
     href: /tools/pass-gen
     desc: "Generate secure passwords with a custom character set and length."
-  - name: Stopwatch
+  - type: item
+    text: Stopwatch
     icon: timer
     href: /tools/stopwatch
     desc: "Start a stopwatch and keep track of laps."
-  - name: Timer
+  - type: item
+    text: Timer
     icon: timer
     href: /tools/timer
     desc: "Start a countdown timer and hear a sound when it reaches zero."
     disabled: true
-  - name: Random Number Generator
+  - type: item
+    text: Random Number Generator
     icon: casino
     href: /tools/rng
     desc: "Generate a random number within a range."
-  - name: Random Item Selector
+  - type: item
+    text: Random Item Selector
     icon: casino
     href: /tools/random-item
     desc: "Pick a random item from a list of choices."
-  - name: Dice
+  - type: item
+    text: Dice
     icon: casino
     href: /tools/dice
     desc: "Roll dice of any size and amount."
     disabled: true
-  - name: Coin Flip
+  - type: item
+    text: Coin Flip
     icon: monetization_on
     href: /tools/coin-flip
     desc: "Flip a coin."
     disabled: true
-  - name: Browser Variable Dump
+  - type: item
+    text: Browser Variable Dump
     icon: developer_mode
     href: /tools/browser-dump
     desc: "View information about your system, browser, and network connection that any website has access to."
-  - name: Metronome
+  - type: item
+    text: Metronome
     icon: graphic_eq
     href: /tools/metronome
     desc: "Set and listen to a metronome at any tempo, or tap to the beat of a song to find its tempo."
-  - name: Time Between Dates
+  - type: item
+    text: Time Between Dates
     icon: date_range
     href: /tools/between-dates
     desc: "Determine the time between two dates."
-  - name: Unix Timestamp Converter
+  - type: item
+    text: Unix Timestamp Converter
     icon: schedule
     href: /tools/unix-timestamp
     desc: "Convert between a human-readable date and a Unix timestamp."
-  - name: IP Location Finder
+  - type: item
+    text: IP Location Finder
     icon: place
     href: /tools/ip-location
     desc: "Determine the geographic location of an IP address."
     disabled: true
-  - name: Aspect Ratio Calculator
+  - type: item
+    text: Aspect Ratio Calculator
     icon: aspect_ratio
     href: /tools/aspect-ratio
     desc: "Calculate the aspect ratio from pixel width and height values."
     disabled: true
-  - name: Weighted Grade Calculator
+  - type: item
+    text: Weighted Grade Calculator
     icon: grading
     href: /tools/weighted-grade
     desc: "Calculate the grade average from a series of differently-weighted scores."
     disabled: true
-  - name: Free Fall Calculator
+  - type: item
+    text: Free Fall Calculator
     icon: waterfall_chart
     href: /tools/free-fall
     desc: "Find the velocity of a falling object and the height from which it fell."
     disabled: true
-  - name: Video Embed Generator
+  - type: item
+    text: Video Embed Generator
     icon: videocam
     href: /tools/cvp-embed
     desc: "Generate CyberVideoPlayer embeds with any video URL."
     disabled: true
-  - name: Custom Popup Generator
+  - type: item
+    text: Custom Popup Generator
     icon: open_in_new
     href: /tools/popup
     desc: "Create a standalone popup of any site with a custom size and window position."
-  - name: Open Port Checker
+  - type: item
+    text: Open Port Checker
     icon: lock_open
     href: /tools/port-checker
     desc: "Check the status of a port on any IP address or hostname."
-  - name: Twitch Chat GIF Generator
+  - type: item
+    text: Twitch Chat GIF Generator
     icon: chat
     href: /tools/twitch-gif
     desc: "Generate a fake scrolling Twitch chat GIF with your own messages and usernames. Optionally, usernames can be fetched from the followers of a single channel."
     disabled: true
-
-extras:
-  name: Extras
-  items:
-  - name: Changelog
-    icon: track_changes
-    href: /changelog
-  - name: View on GitHub
-    icon: public
-    href: https://github.com/CyberGen49/simplecyber.org
