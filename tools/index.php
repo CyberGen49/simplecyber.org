@@ -12,6 +12,7 @@ $webConf = [
 <div style="height: 8px"></div>
 <?php foreach ($menu['tools'] as $item): ?>
     <?php if ($item['disabled']) continue ?>
+    <?php if ($item['type'] !== 'item') continue ?>
     <a class="projectCard" href="<?= $item['href'] ?>">
         <h1><?= $item['text'] ?></h1>
         <p><?= $item['desc'] ?></p>
