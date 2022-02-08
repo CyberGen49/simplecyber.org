@@ -4,11 +4,13 @@
     --bg: #202124;
     --bgL: #292a2e;
     --bgLL: #43444B;
+    --bgLLL: #56575f;
     --acc: #E4BAF8;
     --fg: #fff;
     --fgD: #d2d4e0;
     --fgDD: #a7a8b1;
     --fgErr: rgb(255, 104, 104);
+    --fgGood: rgb(122, 255, 104);
 }
 
 * {
@@ -59,6 +61,7 @@ a:hover:not(:disabled):not(.disabled),
 a:focus:not(:disabled):not(.disabled) {
     color: #fff;
     text-decoration: underline;
+    cursor: pointer;
 }
 
 small {
@@ -69,6 +72,9 @@ small {
     font-size: 14px;
     line-height: 120%;
     color: var(--fgDD);
+}
+small a {
+    font-size: inherit;
 }
 
 code {
@@ -591,14 +597,27 @@ body {
     cursor: default;
     transition: 0.1s ease-in-out;
 }
+.form.button .btn.alt {
+    background: var(--bgLLL);
+    color: var(--fg);
+}
 .form.button .btn:hover,
 .form.button .btn:focus {
-    background: #fff;
+    background: var(--fg);
     color: var(--bgL);
     text-decoration: none;
 }
 .form.button .btn:active {
-    background: #bbb;
+    background: var(--fgD);
+}
+.form.button .btn.alt:hover,
+.form.button .btn.alt:focus {
+    background: var(--fgD);
+    color: var(--bgL);
+}
+.form.button .btn.alt:active {
+    background: var(--fgDD);
+    color: var(--bgL);
 }
 .form.button .btn:disabled,
 .form.button .btn.disabled {
