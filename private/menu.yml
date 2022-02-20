@@ -130,8 +130,7 @@ tools:
     text: IP Location Finder
     icon: place
     href: /tools/ip-location
-    desc: "Determine the geographic location of an IP address."
-    disabled: true
+    desc: "Get the geographic location and local time of any IP address or hostname."
   - type: item
     text: Aspect Ratio Calculator
     icon: aspect_ratio

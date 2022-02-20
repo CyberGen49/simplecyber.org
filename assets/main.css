@@ -68,6 +68,7 @@ small {
     width: 100%;
     max-height: 99999px;
     margin: 0px;
+    margin-top: 3px;
     padding: 0px;
     font-size: 14px;
     line-height: 120%;
@@ -620,7 +621,9 @@ body {
     color: var(--bgL);
 }
 .form.button .btn:disabled,
-.form.button .btn.disabled {
+.form.button .btn.disabled,
+.form.button .btn.alt:disabled,
+.form.button .btn.alt.disabled {
     color: rgba(255, 255, 255, 0.5);
     background: var(--bgL);
     box-shadow: none;

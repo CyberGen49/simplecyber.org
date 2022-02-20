@@ -5,6 +5,10 @@ No versioning for now, but changes are separated by the day they were made, not 
 [View on simplecyber.org](https://simplecyber.org/changelog)  
 [View on GitHub](https://github.com/CyberGen49/simplecyber.org/blob/main/Changelog.md)
 
+## 2022-02-19
+* Made some small styling changes
+* Created the IP Location Finder tool
+
 ## 2022-01-28
 * Revamped the main menu open and close animation
 * Now menus are generated on the fly on the clientside

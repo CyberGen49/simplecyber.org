@@ -166,6 +166,11 @@ function pagePath() {
     return final;
 }
 
+// Returns a Date object in a different timezone
+function convertTimezone(date, tzString) {
+    return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: tzString}));   
+}
+
 // Update the attributes of <a> elements
 function updateAnchors() {
     let anchors = document.getElementsByTagName('a');

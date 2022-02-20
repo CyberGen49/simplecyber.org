@@ -34,7 +34,7 @@ foreach ($menu['tools'] as $tool) {
 <div class="row no-gutters">
     <div class="col-sm-auto">
         <div class="form button section">
-            <button id="useIp" class="btn">Use my IP</button>
+            <button id="useIp" class="btn alt">Use my IP</button>
             <button id="go" class="btn" disabled>Check port</button>
         </div>
     </div>
