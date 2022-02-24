@@ -51,6 +51,9 @@ function onInputUpdate() {
                 if (a.length == b.length) return 0;
             });
             break;
+        case 'rev':
+            arr = arr.reverse();
+            break;
         case 'shuffle':
             array_shuffle(arr);
             break;

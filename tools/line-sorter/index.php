@@ -39,6 +39,10 @@ foreach ($menu['tools'] as $tool) {
         <div class="icon"></div>
         <div class="label">Longest to Shortest</div>
     </button>
+    <button class="item" data-value="rev">
+        <div class="icon"></div>
+        <div class="label">Reverse</div>
+    </button>
     <button class="item" data-value="shuffle">
         <div class="icon"></div>
         <div class="label">Shuffle</div>

@@ -1,9 +1,15 @@
 
 # Changelog
-No versioning for now, but changes are separated by the day they were made, not necessarily committed. My days are split by sleep, not midnight, so these dates will tend to lag behind their respective commits, since I'm at my most productive long after midnight.
+No versioning for now, and changes are separated by the day they were made, not necessarily committed to GitHub. My days are split by sleep, not midnight, so these dates will tend to lag behind their respective commits, since I'm at my most productive late at night (and sometimes into the next morning).
 
 [View on simplecyber.org](https://simplecyber.org/changelog)  
 [View on GitHub](https://github.com/CyberGen49/simplecyber.org/blob/main/Changelog.md)
+
+## 2022-02-22
+* Updated the sitemap file
+
+## 2022-02-21
+* Added a reverse option to the Line Sorter tool
 
 ## 2022-02-19
 * Added the IP Location Finder tool

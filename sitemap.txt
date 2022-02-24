@@ -3,6 +3,7 @@ https://simplecyber.org/tools
 https://simplecyber.org/tools/base64
 https://simplecyber.org/tools/between-dates
 https://simplecyber.org/tools/browser-dump
+https://simplecyber.org/tools/ip-location
 https://simplecyber.org/tools/line-sorter
 https://simplecyber.org/tools/metronome
 https://simplecyber.org/tools/pass-gen
@@ -14,3 +15,5 @@ https://simplecyber.org/tools/rng
 https://simplecyber.org/tools/stopwatch
 https://simplecyber.org/tools/text-analysis
 https://simplecyber.org/tools/unix-timestamp
+https://simplecyber.org/contact
+https://simplecyber.org/changelog
