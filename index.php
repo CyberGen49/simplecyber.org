@@ -28,10 +28,6 @@ $webConf = [
     <p>My most ambitious project to date - A capable and customizable file index for the web, built to make viewing and sharing server files easy.</p>
     <p>This served as a big deep dive into Javascript for me, since it consists of mostly that, whereas everything before this mostly involved PHP. Introducing JS allowed me to make things a ton more seamless, and vastly decrease load times.</p>
 </a>
-<a class="projectCard" href="https://vexx.cf" target="_blank">
-    <h1>Vexx.cf Link Shortener</h1>
-    <p>An easy-to-use link shortener allowing for custom or random link endings. Vexx.cf also features an account system, so anyone can save and view all their short links, with no limits.</p>
-</a>
 <a class="projectCard" href="https://www.deviantart.com/cybergen49/art/SpotiPlayer-for-Rainmeter-813654412" target="_blank">
     <h1>SpotiPlayer for Rainmeter</h1>
     <p>A skin that strives to mimic the appearance and functionality of the Spotify mobile app, right on your desktop.</p>
